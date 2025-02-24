@@ -19,6 +19,7 @@ pub mod codegen;
 pub(crate) mod consthash;
 pub mod demo;
 pub(crate) mod nullhasher;
+mod parse_sac;
 
 #[cfg(test)]
 #[track_caller]
