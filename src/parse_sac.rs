@@ -47,7 +47,7 @@ pub struct ParsedDemo {
     pub winner: Team,
     pub player_id_list: Vec<Vec<u8>>, // wtf??
     pub strats: Vec<Strat>,
-    pub last_tick: DemoTick; // used while looping
+    pub last_tick: DemoTick, // used while looping
 
 }
 
