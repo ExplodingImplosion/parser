@@ -48,6 +48,7 @@ pub struct ParsedDemo {
     pub player_id_list: Vec<Vec<u8>>, // wtf??
     pub strats: Vec<Strat>,
     pub last_tick: DemoTick, // used while looping
+    pub player_info: Vec<UserInfo>,
 
 }
 
@@ -67,8 +68,12 @@ impl ParsedDemo {
     pub fn push_state(&mut self, game_state: &GameState) {
         if let Some(world) = game_state.world.as_ref() {
             for _tick in u32::from(self.last_tick)..u32::from(game_state.tick) {
-                let mut blue_team: Vec<&Player> = Vec![];
+
+                let mut blue_team: Vec<&Player> = vec![];
                 let mut red_team: Vec<&Player> = vec![];
+                let mut soldiers: Vec<&Player> = vec![];
+                let mut medics: Vec<&Player> = vec![];
+                let mut demos: Vec<&Player> = vec![];
                 for (index, mut player) in game_state.players.iter().enumerate() {
                     if player.team == Team.Red {
                         red_team.push(player);
@@ -76,25 +81,32 @@ impl ParsedDemo {
                     else if player.team == Team.Blue {
                         blue_team.push(player);
                     }
+                    if player.class == Class::Soldier{
+                        soldiers.push(player);
+                    }
+                    else if player.class == Class::Medic{
+                        medics.push(player);
+                    }
+                    else if player.class == Class::Demoman{
+                        demos.push(player);
+                    }
 
 
-                    if self.players.get(index).is_none() {
-                        let mut new_player = Vec::with_capacity(
-                            self.header.ticks as usize * PlayerState::PACKET_SIZE,
-                        );
-                        // backfill with defaults
-                        new_player.resize(self.tick * PlayerState::PACKET_SIZE, 0);
-                        self.players.push(new_player);
-                    };
+                    // if self.players.get(index).is_none() {
+                    //     let mut new_player = Vec::with_capacity(
+                    //         self.header.ticks as usize * PlayerState::PACKET_SIZE,
+                    //     );
+                    //     // backfill with defaults
+                    //     new_player.resize(self.tick * PlayerState::PACKET_SIZE, 0);
+                    //     self.players.push(new_player);
+                    // };
 
                     if let (None, Some(info)) = (self.player_info.get(index), player.info.as_ref())
                     {
                         self.player_info.push(info.clone());
                     }
-
-                    let parsed_player = &mut self.players[index];
-                    parsed_player.extend_from_slice(&state.pack(world));
                 }
+
 
 
                 self.tick += 1;
@@ -150,12 +162,11 @@ pub fn get_class_count(class: Class, ) -> u8{
 
 }
 
-pub fn find_sac(soldiers,medics) {
+pub fn find_sac_start(soldiers,medics, tick: i64,) -> i64 {
     for soldier in soldiers{
         if soldier.get_distance_to(medics[]) < SAC_DISTANCE && !both_teams_close() {
             // sac probably happening
-
-            // find result
+                return tick;
         }
     }
 
