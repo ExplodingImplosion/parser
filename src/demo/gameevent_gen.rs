@@ -4931,6 +4931,7 @@ impl TeamPlayPointStartCaptureEvent {
         Ok(())
     }
 }
+
 #[cfg_attr(feature = "schema", derive(schemars::JsonSchema))]
 #[derive(Debug, PartialEq, Serialize, Deserialize, Clone)]
 pub struct TeamPlayPointCapturedEvent {
@@ -4939,6 +4940,7 @@ pub struct TeamPlayPointCapturedEvent {
     pub team: u8,
     pub cappers: MaybeUtf8String,
 }
+
 impl TeamPlayPointCapturedEvent {
     #[allow(unused_variables)]
     fn read(stream: &mut Stream, definition: &GameEventDefinition) -> Result<Self> {
