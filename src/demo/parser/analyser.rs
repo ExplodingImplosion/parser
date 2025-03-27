@@ -107,6 +107,11 @@ pub enum Class {
     Engineer = 9,
 }
 
+#[repr(u8)]
+pub enum CPID {
+    BlueLast, BlueSecond, Mid, RedSecond, RedLast
+}
+
 impl<'de> Deserialize<'de> for Class {
     fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
     where
@@ -505,11 +510,49 @@ impl Analyser {
                 }
             }
             GameEvent::TeamPlayRoundWin(event) => {
+                println!("{:?}", event);
                 if event.win_reason != WIN_REASON_TIME_LIMIT {
                     self.state.rounds.push(Round::from_event(event, tick))
                 }
             }
-            _ => {}
+            GameEvent::TeamPlayPointCaptured(event) => {
+                // println!("{:?}", event);
+
+                // if the cp is blue's second
+                if (event.cp == CPID::BlueSecond as u8) {
+                    // if red team capped blue second
+                    if (event.team == Team::Red as u8) {
+                        // blue is on last now
+                        self.state.blue_on_last_ticks.push(tick);
+                        // println!("blue on last {}", tick);
+                    }
+                    // otherwise, blue capped their second
+                    else {
+                        // blue is no longer on last
+                        self.state.blue_off_last_ticks.push(tick);
+                        // println!("blue off last {}", tick);
+                    }
+                }
+
+                // if the cp is red's second
+                else if (event.cp == CPID::RedSecond as u8) {
+                    // if blue team capped red second
+                    if (event.team == Team::Blue as u8) {
+                        // red is on last now
+                        self.state.red_on_last_ticks.push(tick);
+                        // println!("red on last {}", tick);
+                    }
+                    // otherwise, red team capped their second
+                    else {
+                        // red is no longer on last
+                        self.state.red_on_last_ticks.push(tick);
+                        // println!("red off last {}", tick);
+                    }
+                }
+            }
+            _ => {
+                // println!("Unhandled event: {:?}", event);
+            }
         }
     }
 
@@ -545,4 +588,8 @@ pub struct MatchState {
     pub start_tick: ServerTick,
     pub interval_per_tick: f32,
     pub pauses: Vec<Pause>,
+    pub red_on_last_ticks: Vec<DemoTick>,
+    pub red_off_last_ticks: Vec<DemoTick>,
+    pub blue_on_last_ticks: Vec<DemoTick>,
+    pub blue_off_last_ticks: Vec<DemoTick>,
 }
