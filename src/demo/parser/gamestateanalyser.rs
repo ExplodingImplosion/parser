@@ -70,7 +70,9 @@ impl MessageHandler for GameStateAnalyser {
                     GameEvent::ObjectDestroyed(ObjectDestroyedEvent { index, .. }) => {
                         self.state.remove_building((*index as u32).into());
                     }
-                    _ => {}
+                    _ => {
+                        println!("le event gsa");
+                    }
                 }
             }
             _ => {}
