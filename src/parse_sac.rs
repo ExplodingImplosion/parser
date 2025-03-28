@@ -3,12 +3,15 @@ use crate::demo::data::game_state::{Projectile, ProjectileType};
 use crate::demo::data::DemoTick;
 use crate::demo::gamevent::GameEvent;
 use crate::demo::header::Header;
-use crate::demo::parser::analyser::UserInfo;
+use crate::demo::parser::analyser::{UserInfo, CPID};
 use crate::demo::parser::gamestateanalyser::{Building, Class, Dispenser, GameState, GameStateAnalyser, Kill, PlayerState as PlayerAliveState, Sentry, Team, Teleporter, UserId, World};
 use crate::demo::vector::VectorXY;
-use crate::{Demo, DemoParser};
+use crate::{Demo, DemoParser,ParseError};
 use crate::demo::data::game_state::Player;
+use js_sys::Function;
+use crate::demo::gameevent_gen::GameEventType::TeamPlayPointCaptured;
 
+#[derive(Debug,Serialize,Deserialize,PartialEq,Clone)]
 enum StratType {
     SAC,
     SPY,
@@ -22,18 +25,20 @@ enum StratType {
 
 }
 
+#[derive(Debug,Serialize,Deserialize,PartialEq,Clone)]
 enum StratResult {
-    MED_DROP,
-    MED_FORCE,
-    DEMO_KILL,
-    PLAYER_DEATH,
-    TEAM_WIPE,
-    POINT_TAKEN, // maybe get rid of this if only looking at last
-    LAST_TAKEN,
+    MedDrop,
+    MedForce,
+    DemoKill,
+    PlayerDeath,
+    TeamWipe,
+    PointTaken, // maybe get rid of this if only looking at last
+    LastTaken,
 
-    FRIENDLY_MARKER, // bits past this point are the same as above, but for friendly team
+    FriendlyMarker, // bits past this point are the same as above, but for friendly team
 }
 
+#[derive(Debug,Serialize,Deserialize,PartialEq,Clone)]
 pub struct Strat {
     pub strat_type: StratType,
     pub tick: usize,
@@ -42,12 +47,13 @@ pub struct Strat {
     pub result: StratResult,
 }
 
+#[derive(Debug)]
 pub struct ParsedDemo {
     pub id: String,
     pub winner: Team,
     pub player_id_list: Vec<Vec<u8>>, // wtf??
     pub strats: Vec<Strat>,
-    pub last_tick: DemoTick, // used while looping
+    pub last_tick: DemoTick, // used while looping ?
     pub player_info: Vec<UserInfo>,
 
 }
@@ -63,8 +69,23 @@ impl Vector3{
         Vector3{x, y, z}
     }
 }
-
 impl ParsedDemo {
+
+    pub fn new(header: Header) -> Self {
+        ParsedDemo {
+            id: "default".to_string(),
+            winner: Team::Spectator,
+            player_id_list: Vec::new(),
+            strats: Vec::new(),
+            last_tick: DemoTick::default(), // used while looping ?
+            player_info: Vec::new(),
+        }
+    }
+
+    pub fn finish(&mut self, state: &GameState) {
+        // TODO add stuff
+    }
+
     pub fn push_state(&mut self, game_state: &GameState) {
         if let Some(world) = game_state.world.as_ref() {
             for _tick in u32::from(self.last_tick)..u32::from(game_state.tick) {
@@ -75,10 +96,10 @@ impl ParsedDemo {
                 let mut medics: Vec<&Player> = vec![];
                 let mut demos: Vec<&Player> = vec![];
                 for (index, mut player) in game_state.players.iter().enumerate() {
-                    if player.team == Team.Red {
+                    if player.team == Team::Red {
                         red_team.push(player);
                     }
-                    else if player.team == Team.Blue {
+                    else if player.team == Team::Blue {
                         blue_team.push(player);
                     }
                     if player.class == Class::Soldier{
@@ -106,23 +127,63 @@ impl ParsedDemo {
                         self.player_info.push(info.clone());
                     }
                 }
+                for (_,event) in game_state.events.iter() {
+                    match event {
+                        GameEvent::TeamPlayPointCaptured(event) => {
+                            println!("{:?}", event);
+
+                            // if the cp is blue's second
+                            if (event.cp == CPID::BlueSecond as u8) {
+                                // if red team capped blue second
+                                if (event.team == Team::Red as u8) {
+                                    // blue is on last now
+                                    // game_state.blue_on_last_ticks.push(tick);
+                                    println!("blue on last {}", game_state.tick);
+                                }
+                                // otherwise, blue capped their second
+                                else {
+                                    // blue is no longer on last
+                                    // game_state.blue_off_last_ticks.push(tick);
+                                    println!("blue off last {}", game_state.tick);
+                                }
+                            }
+
+                            // if the cp is red's second
+                            else if (event.cp == CPID::RedSecond as u8) {
+                                // if blue team capped red second
+                                if (event.team == Team::Blue as u8) {
+                                    // red is on last now
+                                    // game_state.red_on_last_ticks.push(tick);
+                                    println!("red on last {}", game_state.tick);
+                                }
+                                // otherwise, red team capped their second
+                                else {
+                                    // red is no longer on last
+                                    // game_state.red_on_last_ticks.push(tick);
+                                    println!("red off last {}", game_state.tick);
+                                }
+                            }
+                        }
+                        _ => {
+
+                        }
+                    }
+                }
 
 
-
-                self.tick += 1;
             }
             self.last_tick = game_state.tick;
         }
     }
 }
 
-pub fn parse_demo(buffer: Box<[u8]>, progress: &Function) -> ParsedDemo {
-    let demo = Demo::new(buffer);
+pub fn parse_demo(buffer: Box<[u8]>, progress: &Function) -> Result<(ParsedDemo),ParseError> {
+    let demo = Demo::new(&buffer);
 
-    let parser  = DemoParser::new_with_analyser(demo.get_stream(),GameStateAnalyser::default());
+    let parser = DemoParser::new_with_analyser(demo.get_stream(), GameStateAnalyser::default());
     let (header, mut ticker) = parser.ticker()?;
-    let total_ticks = header.ticks();
-    let mut last_progress = 0;
+    let total_ticks = header.ticks;
+    let mut last_progress = 0.;
 
     let mut parsed_demo = ParsedDemo::new(header);
 
@@ -132,44 +193,44 @@ pub fn parse_demo(buffer: Box<[u8]>, progress: &Function) -> ParsedDemo {
             ((u32::from(ticker.state().tick) as f32 / total_ticks as f32) * 100.0).floor();
         if new_progress > last_progress {
             last_progress = new_progress;
-            let _ =  //progress.call1(&JsValue::null(), &last_progress.into());
+            // let _ =  progress.call1(&JsValue::null(), &last_progress.into());
         }
     }
 
     parsed_demo.finish(ticker.state());
     let state = ticker.into_state();
 
-    Ok((parsed_demo,state.world))
+    Ok(parsed_demo)
 }
-
-pub fn lmao() {
-    if !is_last() {
-        return;
-    }
-
-    let team_atk_last = get_team_attacking_last();
-
-    let teams = ___; // teams of all player enttities
-
-    let soldiers = get_class_count();
-    let medics = get_class_count();
-
-    let spies = get_class_count();
-    let snipers = get_class_count();
-}
-
-pub fn get_class_count(class: Class, ) -> u8{
-
-}
-
-pub fn find_sac_start(soldiers,medics, tick: i64,) -> i64 {
-    for soldier in soldiers{
-        if soldier.get_distance_to(medics[]) < SAC_DISTANCE && !both_teams_close() {
-            // sac probably happening
-                return tick;
-        }
-    }
-
-}
+//
+// pub fn lmao() {
+//     if !is_last() {
+//         return;
+//     }
+//
+//     let team_atk_last = get_team_attacking_last();
+//
+//     let teams = ___; // teams of all player enttities
+//
+//     let soldiers = get_class_count();
+//     let medics = get_class_count();
+//
+//     let spies = get_class_count();
+//     let snipers = get_class_count();
+// }
+//
+// pub fn get_class_count(class: Class, ) -> u8{
+//
+// }
+//
+// pub fn find_sac_start(soldiers,medics, tick: i64,) -> i64 {
+//     for soldier in soldiers{
+//         if soldier.get_distance_to(medics[]) < SAC_DISTANCE && !both_teams_close() {
+//             // sac probably happening
+//                 return tick;
+//         }
+//     }
+//
+// }
 
 // pub fn parse_demo(buffer: Box<[u8]>, progress: &Function) -> Result<Results>
