@@ -174,15 +174,19 @@ impl ParsedDemo {
                         // if red team capped blue second
                         if event.team == Team::Red as u8 {
                             // blue is on last now
-                            self.blue_on_last_ticks.push(tick);
-                            log_if_equal!("blue on last", event_tick, tick);
+                            if event_tick == &tick {
+                                self.blue_on_last_ticks.push(tick);
+                                println!("blue on last {}", tick);
+                            }
                             team_on_last = Team::Blue;
                         }
                         // otherwise, blue capped their second
                         else {
                             // blue is no longer on last
-                            self.blue_off_last_ticks.push(tick);
-                            log_if_equal!("blue off last", event_tick, tick);
+                            if event_tick == &tick {
+                                self.blue_off_last_ticks.push(tick);
+                                println!("blue off last {}", tick);
+                            }
                             team_on_last = Team::Other;
                         }
                     }
@@ -192,31 +196,39 @@ impl ParsedDemo {
                         // if blue team capped red second
                         if event.team == Team::Blue as u8 {
                             // red is on last now
-                            self.red_on_last_ticks.push(tick);
-                            log_if_equal!("red on last", event_tick, tick);
+                            if event_tick == &tick {
+                                self.red_on_last_ticks.push(tick);
+                                println!("red on last {}", tick);
+                            }
                             team_on_last = Team::Red;
                         }
                         // otherwise, red team capped their second
                         else {
                             // red is no longer on last
-                            self.red_off_last_ticks.push(tick);
-                            log_if_equal!("red off last", event_tick, tick);
+                            if event_tick == &tick {
+                                self.red_off_last_ticks.push(tick);
+                                println!("red off last {}", tick);
+                            }
                             team_on_last = Team::Other;
                         }
                     }
                     else if event.cp == CPID::RedLast as u8 {
-                        if event.team == Team::Blue as u8 {
-                            log_if_equal!("blue capped red's last", event_tick, tick);
-                        } else {
-                            log_if_equal!("What the fuck?!", event_tick, tick);
+                        if event_tick == &tick {
+                            if event.team == Team::Blue as u8 {
+                                println!("blue capped red's last {}", tick);
+                            } else {
+                                println!("What the fuck?!")
+                            }
                         }
                         team_on_last = Team::Other;
                     }
                     else if event.cp == CPID::BlueLast as u8 {
-                        if event.team == Team::Red as u8 {
-                            log_if_equal!("red capped blue's last", event_tick, tick);
-                        } else {
-                            log_if_equal!("What the fuck?!", event_tick, tick);
+                        if event_tick == &tick {
+                            if event.team == Team::Red as u8 {
+                                println!("red capped blue's last {}", tick);
+                            } else {
+                                println!("What the fuck?!")
+                            }
                         }
                         team_on_last = Team::Other; // someone capped last, no longer on last
                     }
