@@ -98,6 +98,7 @@ impl ParsedDemo {
     pub fn push_state(&mut self, game_state: &GameState) {
         if let Some(world) = game_state.world.as_ref() {
             let mut team_on_last = Team::Other;
+            // let mut is_sacing =
             for _tick in u32::from(self.last_tick)..u32::from(game_state.tick) {
 
                 let tick = game_state.tick;
@@ -108,6 +109,7 @@ impl ParsedDemo {
                 let mut medics: Vec<&Player> = vec![];
                 let mut demos: Vec<&Player> = vec![];
 
+                // fill up the above stuff for this frame
                 for (index, mut player) in game_state.players.iter().enumerate() {
                     if player.team == Team::Red {
                         red_team.push(player);
@@ -139,7 +141,9 @@ impl ParsedDemo {
                 }
 
                 team_on_last = self.update_on_last_frames(game_state, tick);
-            self.last_tick = tick;
+
+                self.last_tick = tick;
+
             }
         }
     }
