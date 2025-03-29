@@ -71,7 +71,7 @@ impl MessageHandler for GameStateAnalyser {
                         self.state.remove_building((*index as u32).into());
                     }
                     _ => {
-                        println!("le event gsa");
+
                     }
                 }
             }
