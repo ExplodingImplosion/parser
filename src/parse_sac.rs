@@ -148,7 +148,9 @@ impl ParsedDemo {
                     // blue team might be sac'ing in
                     let blue_soldiers = find_soldiers(soldiers,Team::Blue);
                     let red_medics = find_medic(medics,Team::Red);
-                    find_sac_start(blue_soldiers,red_medics,blue_team,tick);
+                    if is_alive(red_medics) {
+                        find_sac_start(blue_soldiers, red_medics, blue_team, tick);
+                    }
                 }
                 else if team_on_last == Team::Blue {
                     // red team might be sac'ing in
@@ -294,6 +296,9 @@ const SAC_DISTANCE: f32 = 1018.5;
 pub fn find_sac_start(soldiers: Vec<&Player>, medic: &Player, soldier_team: Vec<&Player>, tick: DemoTick,) -> DemoTick {
     for soldier in soldiers{
         if Some(soldier).unwrap() == soldier{
+            if !is_alive(soldier) {
+                continue;
+            }
             // let soldier_pos = soldier_team.iter().position(&soldier);
             //
             // let mut everyone_else = soldier_team.clone();
@@ -317,7 +322,11 @@ pub fn find_sac_start(soldiers: Vec<&Player>, medic: &Player, soldier_team: Vec<
 
 pub fn get_without<'a>(vec: &'a Vec<&'a Player>, player: &'a Player) -> Vec<&'a Player> {
     let mut without = vec.clone();
-    without.remove(vec.iter().position(|this| this == &player).unwrap());
+    // Exclude dead players
+    without.retain(|this| this.state == PlayerAliveState::Alive);
+    without.retain(|this| this != &player);
+    // previous version, which somehow got fucked up after adding the dead player exclusion
+    // without.remove(vec.iter().position(|this| this == &player).unwrap());
     assert!(!without.contains(&&player));
     without
 }
@@ -337,7 +346,7 @@ pub fn get_min_dist(player: &Player, everyone_else: &Vec<&Player>) -> f32 {
     min
 }
 
-pub fn get_min_dist_player<'a>(player: &'a Player, everyone_else: &'a Vec<&'a Player>) -> &'a Player {
+pub fn get_min_dist_player<'a>(player: &'a Player, everyone_else: &'a Vec<&'a Player>) -> Option<&'a Player> {
     let mut min: f32 = INFINITY;
     let mut idx: usize = 0;
     let mut i: usize = 0;
@@ -349,7 +358,10 @@ pub fn get_min_dist_player<'a>(player: &'a Player, everyone_else: &'a Vec<&'a Pl
         }
         i += 1;
     }
-    everyone_else[idx]
+    if everyone_else.is_empty() {
+        return None
+    }
+    Some(everyone_else[idx])
 }
 
 pub fn get_min_dist_name(player: &Player, everyone_else: &Vec<&Player>) -> String {
@@ -389,4 +401,8 @@ pub fn find_on_team(players: Vec<&Player>, team: Team, max_capacity: usize) -> V
         }
     }
     team_players
+}
+
+pub fn is_alive(player: &Player) -> bool{
+    player.state == PlayerAliveState::Alive
 }
