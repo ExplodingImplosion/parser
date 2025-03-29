@@ -8,7 +8,6 @@ use crate::demo::parser::gamestateanalyser::{Building, Class, Dispenser, GameSta
 use crate::demo::vector::VectorXY;
 use crate::{Demo, DemoParser,ParseError};
 use crate::demo::data::game_state::Player;
-use js_sys::Function;
 use crate::demo::gameevent_gen::GameEventType::TeamPlayPointCaptured;
 
 #[derive(Debug,Serialize,Deserialize,PartialEq,Clone)]
@@ -47,7 +46,7 @@ pub struct Strat {
     pub result: StratResult,
 }
 
-#[derive(Debug)]
+#[derive(Debug,Serialize,Deserialize)]
 pub struct ParsedDemo {
     pub id: String,
     pub winner: Team,
@@ -55,7 +54,11 @@ pub struct ParsedDemo {
     pub strats: Vec<Strat>,
     pub last_tick: DemoTick, // used while looping ?
     pub player_info: Vec<UserInfo>,
-
+    pub header: Header,
+    pub red_on_last_ticks: Vec<DemoTick>,
+    pub red_off_last_ticks: Vec<DemoTick>,
+    pub blue_on_last_ticks: Vec<DemoTick>,
+    pub blue_off_last_ticks: Vec<DemoTick>,
 }
 
 pub struct Vector3 {
@@ -69,6 +72,7 @@ impl Vector3{
         Vector3{x, y, z}
     }
 }
+
 impl ParsedDemo {
 
     pub fn new(header: Header) -> Self {
@@ -79,6 +83,11 @@ impl ParsedDemo {
             strats: Vec::new(),
             last_tick: DemoTick::default(), // used while looping ?
             player_info: Vec::new(),
+            header,
+            red_on_last_ticks: Vec::new(),
+            blue_on_last_ticks: Vec::new(),
+            red_off_last_ticks: Vec::new(),
+            blue_off_last_ticks: Vec::new(),
         }
     }
 
@@ -88,27 +97,28 @@ impl ParsedDemo {
 
     pub fn push_state(&mut self, game_state: &GameState) {
         if let Some(world) = game_state.world.as_ref() {
+            let mut team_on_last = Team::Other;
             for _tick in u32::from(self.last_tick)..u32::from(game_state.tick) {
+
+                let tick = game_state.tick;
 
                 let mut blue_team: Vec<&Player> = vec![];
                 let mut red_team: Vec<&Player> = vec![];
                 let mut soldiers: Vec<&Player> = vec![];
                 let mut medics: Vec<&Player> = vec![];
                 let mut demos: Vec<&Player> = vec![];
+
                 for (index, mut player) in game_state.players.iter().enumerate() {
                     if player.team == Team::Red {
                         red_team.push(player);
-                    }
-                    else if player.team == Team::Blue {
+                    } else if player.team == Team::Blue {
                         blue_team.push(player);
                     }
-                    if player.class == Class::Soldier{
+                    if player.class == Class::Soldier {
                         soldiers.push(player);
-                    }
-                    else if player.class == Class::Medic{
+                    } else if player.class == Class::Medic {
                         medics.push(player);
-                    }
-                    else if player.class == Class::Demoman{
+                    } else if player.class == Class::Demoman {
                         demos.push(player);
                     }
 
@@ -127,58 +137,82 @@ impl ParsedDemo {
                         self.player_info.push(info.clone());
                     }
                 }
-                for (_,event) in game_state.events.iter() {
-                    match event {
-                        GameEvent::TeamPlayPointCaptured(event) => {
-                            println!("{:?}", event);
 
-                            // if the cp is blue's second
-                            if (event.cp == CPID::BlueSecond as u8) {
-                                // if red team capped blue second
-                                if (event.team == Team::Red as u8) {
-                                    // blue is on last now
-                                    // game_state.blue_on_last_ticks.push(tick);
-                                    println!("blue on last {}", game_state.tick);
-                                }
-                                // otherwise, blue capped their second
-                                else {
-                                    // blue is no longer on last
-                                    // game_state.blue_off_last_ticks.push(tick);
-                                    println!("blue off last {}", game_state.tick);
-                                }
-                            }
-
-                            // if the cp is red's second
-                            else if (event.cp == CPID::RedSecond as u8) {
-                                // if blue team capped red second
-                                if (event.team == Team::Blue as u8) {
-                                    // red is on last now
-                                    // game_state.red_on_last_ticks.push(tick);
-                                    println!("red on last {}", game_state.tick);
-                                }
-                                // otherwise, red team capped their second
-                                else {
-                                    // red is no longer on last
-                                    // game_state.red_on_last_ticks.push(tick);
-                                    println!("red off last {}", game_state.tick);
-                                }
-                            }
-                        }
-                        _ => {
-
-                        }
-                    }
-                }
-
-
+                team_on_last = self.update_on_last_frames(game_state, tick);
+            self.last_tick = tick;
             }
-            self.last_tick = game_state.tick;
         }
     }
-}
 
-pub fn parse_demo(buffer: Box<[u8]>, progress: &Function) -> Result<(ParsedDemo),ParseError> {
-    let demo = Demo::new(&buffer);
+    // Team::Other is treated as no change, Team::Spectator is treated as no longer on last
+    fn update_on_last_frames(&mut self, game_state: &GameState, tick: DemoTick) -> Team {
+        for (event_tick, event) in game_state.events.iter() {
+            if event_tick < &tick {
+                continue;
+            }
+            match event {
+                GameEvent::TeamPlayPointCaptured(event) => {
+                    // println!("{:?}", event);
+
+                    // if the cp is blue's second
+                    if event.cp == CPID::BlueSecond as u8 {
+                        // if red team capped blue second
+                        if event.team == Team::Red as u8 {
+                            // blue is on last now
+                            self.blue_on_last_ticks.push(tick);
+                            println!("blue on last {}", tick);
+                            return Team::Blue;
+                        }
+                        // otherwise, blue capped their second
+                        else {
+                            // blue is no longer on last
+                            self.blue_off_last_ticks.push(tick);
+                            println!("blue off last {}", tick);
+                            return Team::Spectator;
+                        }
+                    }
+
+                    // if the cp is red's second
+                    else if event.cp == CPID::RedSecond as u8 {
+                        // if blue team capped red second
+                        if event.team == Team::Blue as u8 {
+                            // red is on last now
+                            self.red_on_last_ticks.push(tick);
+                            println!("red on last {}", tick);
+                            return Team::Red;
+                        }
+                        // otherwise, red team capped their second
+                        else {
+                            // red is no longer on last
+                            self.red_off_last_ticks.push(tick);
+                            println!("red off last {}", tick);
+                            return Team::Spectator;
+                        }
+                    } else if event.cp == CPID::RedLast as u8 {
+                        if event.team == Team::Blue as u8 {
+                            println!("blue capped red's last {}", tick);
+                        } else {
+                            println!("What the fuck?!")
+                        }
+                        return Team::Spectator;
+                    } else if event.cp == CPID::BlueLast as u8 {
+                        if event.team == Team::Red as u8 {
+                            println!("red capped blue's last {}", tick);
+                        } else {
+                            println!("What the fuck?!")
+                        }
+                        return Team::Spectator; // someone capped last, no longer on last
+                    }
+                }
+                _ => {}
+            }
+        }
+        Team::Other
+    }
+
+    }
+
+pub fn parse_demo(demo: Demo) -> Result<ParsedDemo,ParseError> {
 
     let parser = DemoParser::new_with_analyser(demo.get_stream(), GameStateAnalyser::default());
     let (header, mut ticker) = parser.ticker()?;
@@ -232,5 +266,3 @@ pub fn parse_demo(buffer: Box<[u8]>, progress: &Function) -> Result<(ParsedDemo)
 //     }
 //
 // }
-
-// pub fn parse_demo(buffer: Box<[u8]>, progress: &Function) -> Result<Results>

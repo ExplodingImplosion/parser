@@ -7,6 +7,7 @@ use tf_demo_parser::demo::header::Header;
 use tf_demo_parser::demo::parser::analyser::MatchState;
 use tf_demo_parser::demo::parser::player_summary_analyzer::PlayerSummaryAnalyzer;
 pub use tf_demo_parser::{Demo, DemoParser, Parse, ParseError, ParserState, Stream};
+use tf_demo_parser::parse_sac;
 
 #[cfg(feature = "jemallocator")]
 #[global_allocator]
@@ -18,6 +19,13 @@ struct JsonDemo {
     header: Header,
     #[serde(flatten)]
     state: MatchState,
+}
+
+#[derive(Serialize, Deserialize)]
+#[serde(rename_all = "camelCase")]
+struct JsonParsed {
+    #[serde(flatten)]
+    state: parse_sac::ParsedDemo,
 }
 
 fn main() -> Result<(), MainError> {
@@ -39,15 +47,18 @@ fn main() -> Result<(), MainError> {
     let demo = Demo::new(&file);
 
     if !detailed_summaries {
-        // Use the default (simple) analyzer to track kills, assists, and deaths
-        let parser = if all {
-            DemoParser::new_all(demo.get_stream())
-        } else {
-            DemoParser::new(demo.get_stream())
-        };
-        let (header, state) = parser.parse()?;
-        let demo = JsonDemo { header, state };
-        println!("{}", serde_json::to_string(&demo)?);
+        let gaming = parse_sac::parse_demo(demo)?;
+        let parsed = JsonParsed {state: gaming};
+        println!("{}", serde_json::to_string(&parsed)?);
+        // // Use the default (simple) analyzer to track kills, assists, and deaths
+        // let parser = if all {
+        //     DemoParser::new_all(demo.get_stream())
+        // } else {
+        //     DemoParser::new(demo.get_stream())
+        // };
+        // let (header, state) = parser.parse()?;
+        // let demo = JsonDemo { header, state };
+        // println!("{}", serde_json::to_string(&demo)?);
     } else {
         let parser = DemoParser::new_with_analyser(demo.get_stream(), PlayerSummaryAnalyzer::new());
         let (header, state) = parser.parse()?;

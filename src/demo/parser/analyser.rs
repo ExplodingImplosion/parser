@@ -545,7 +545,7 @@ impl Analyser {
                     // otherwise, red team capped their second
                     else {
                         // red is no longer on last
-                        self.state.red_on_last_ticks.push(tick);
+                        self.state.red_off_last_ticks.push(tick);
                         // println!("red off last {}", tick);
                     }
                 }
