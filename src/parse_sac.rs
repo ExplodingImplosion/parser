@@ -1,5 +1,7 @@
+use std::f32::INFINITY;
+use itertools::Itertools;
 use serde::{Deserialize, Serialize};
-use crate::demo::data::game_state::{Projectile, ProjectileType};
+use crate::demo::data::game_state::{Projectile, ProjectileType,PlayerState};
 use crate::demo::data::DemoTick;
 use crate::demo::gamevent::GameEvent;
 use crate::demo::header::Header;
@@ -46,6 +48,14 @@ pub struct Strat {
     pub result: StratResult,
 }
 
+macro_rules! log_if_equal {
+    ($msg:expr, $event_tick:expr, $tick:expr) => {
+        if $event_tick == &$tick {
+            println!("{} {}", $msg, $tick);
+        }
+    };
+}
+
 #[derive(Debug,Serialize,Deserialize)]
 pub struct ParsedDemo {
     pub id: String,
@@ -83,12 +93,13 @@ impl ParsedDemo {
         // TODO add stuff
     }
 
-    pub fn push_state(&mut self, game_state: &GameState) {
+    pub fn push_state(&mut self, mut game_state: &GameState) {
         if let Some(world) = game_state.world.as_ref() {
-            let mut team_on_last = Team::Other;
-            // let mut is_sacing =
+            // Other = no team on last
+            // let mut team_on_last = Team::Other;
+            // other = no team sac
+            let mut is_sacing = Team::Other;
             for _tick in u32::from(self.last_tick)..u32::from(game_state.tick) {
-
                 let tick = game_state.tick;
 
                 let mut blue_team: Vec<&Player> = vec![];
@@ -128,7 +139,21 @@ impl ParsedDemo {
                     }
                 }
 
-                team_on_last = self.update_on_last_frames(game_state, tick);
+                let team_on_last = self.update_on_last_frames(game_state, tick);
+                // The team on last should always be red, blue, or none.
+                assert_ne!(team_on_last, Team::Spectator);
+
+
+                if team_on_last == Team::Red {
+                    // blue team might be sac'ing in
+                    let blue_soldiers = find_soldiers(soldiers,Team::Blue);
+                    let red_medics = find_medic(medics,Team::Red);
+                    find_sac_start(blue_soldiers,red_medics,blue_team,tick);
+                }
+                else if team_on_last == Team::Blue {
+                    // red team might be sac'ing in
+
+                }
 
                 self.last_tick = tick;
 
@@ -138,10 +163,8 @@ impl ParsedDemo {
 
     // Team::Other is treated as no change, Team::Spectator is treated as no longer on last
     fn update_on_last_frames(&mut self, game_state: &GameState, tick: DemoTick) -> Team {
+        let mut team_on_last = Team::Other;
         for (event_tick, event) in game_state.events.iter() {
-            if event_tick < &tick {
-                continue;
-            }
             match event {
                 GameEvent::TeamPlayPointCaptured(event) => {
                     // println!("{:?}", event);
@@ -152,15 +175,15 @@ impl ParsedDemo {
                         if event.team == Team::Red as u8 {
                             // blue is on last now
                             self.blue_on_last_ticks.push(tick);
-                            println!("blue on last {}", tick);
-                            return Team::Blue;
+                            log_if_equal!("blue on last", event_tick, tick);
+                            team_on_last = Team::Blue;
                         }
                         // otherwise, blue capped their second
                         else {
                             // blue is no longer on last
                             self.blue_off_last_ticks.push(tick);
-                            println!("blue off last {}", tick);
-                            return Team::Spectator;
+                            log_if_equal!("blue off last", event_tick, tick);
+                            team_on_last = Team::Other;
                         }
                     }
 
@@ -170,39 +193,42 @@ impl ParsedDemo {
                         if event.team == Team::Blue as u8 {
                             // red is on last now
                             self.red_on_last_ticks.push(tick);
-                            println!("red on last {}", tick);
-                            return Team::Red;
+                            log_if_equal!("red on last", event_tick, tick);
+                            team_on_last = Team::Red;
                         }
                         // otherwise, red team capped their second
                         else {
                             // red is no longer on last
                             self.red_off_last_ticks.push(tick);
-                            println!("red off last {}", tick);
-                            return Team::Spectator;
+                            log_if_equal!("red off last", event_tick, tick);
+                            team_on_last = Team::Other;
                         }
-                    } else if event.cp == CPID::RedLast as u8 {
+                    }
+                    else if event.cp == CPID::RedLast as u8 {
                         if event.team == Team::Blue as u8 {
-                            println!("blue capped red's last {}", tick);
+                            log_if_equal!("blue capped red's last", event_tick, tick);
                         } else {
-                            println!("What the fuck?!")
+                            log_if_equal!("What the fuck?!", event_tick, tick);
                         }
-                        return Team::Spectator;
-                    } else if event.cp == CPID::BlueLast as u8 {
+                        team_on_last = Team::Other;
+                    }
+                    else if event.cp == CPID::BlueLast as u8 {
                         if event.team == Team::Red as u8 {
-                            println!("red capped blue's last {}", tick);
+                            log_if_equal!("red capped blue's last", event_tick, tick);
                         } else {
-                            println!("What the fuck?!")
+                            log_if_equal!("What the fuck?!", event_tick, tick);
                         }
-                        return Team::Spectator; // someone capped last, no longer on last
+                        team_on_last = Team::Other; // someone capped last, no longer on last
                     }
                 }
                 _ => {}
             }
         }
-        Team::Other
+        team_on_last
     }
 
     }
+
 
 pub fn parse_demo(demo: Demo) -> Result<ParsedDemo,ParseError> {
 
@@ -249,12 +275,107 @@ pub fn parse_demo(demo: Demo) -> Result<ParsedDemo,ParseError> {
 //
 // }
 //
-// pub fn find_sac_start(soldiers,medics, tick: i64,) -> i64 {
-//     for soldier in soldiers{
-//         if soldier.get_distance_to(medics[]) < SAC_DISTANCE && !both_teams_close() {
-//             // sac probably happening
-//                 return tick;
-//         }
-//     }
-//
-// }
+
+// player bounding box sizes are 48-49 hu's deep and wide (there's inconsistent information online).
+// 21 bounding boxes * 48.5 estimated bb size = 1018.5 hu's.
+const SAC_DISTANCE: f32 = 1018.5;
+pub fn find_sac_start(soldiers: Vec<&Player>, medic: &Player, soldier_team: Vec<&Player>, tick: DemoTick,) -> DemoTick {
+    for soldier in soldiers{
+        if Some(soldier).unwrap() == soldier{
+            // let soldier_pos = soldier_team.iter().position(&soldier);
+            //
+            // let mut everyone_else = soldier_team.clone();
+            // everyone_else.remove(soldier_pos.unwrap());
+            // assert!(!everyone_else.clone().contains(soldier));
+            let everyone_else = get_without(&soldier_team,soldier);
+            let med_dist = get_dist(soldier,medic);
+            let team_dist = get_min_dist(soldier,&everyone_else);
+            let min_dist_player = get_min_dist_player(soldier,&everyone_else);
+            continue;
+            println!("--------------\nplayer: {} ({})\nmed dist: {}\nteam dist: {}\nteam: {} ({})\n--------------",
+                     get_name(soldier),soldier.state == PlayerState::Alive,med_dist,team_dist,get_name(min_dist_player),min_dist_player.class.to_string());
+            if med_dist < SAC_DISTANCE && med_dist < team_dist {
+                // sac probably happening
+                println!("{} is sacing {} on tick {}",get_name(soldier),get_name(medic),tick);
+                return tick;
+            }
+        }
+    }
+    DemoTick::from(0)
+}
+
+pub fn get_without<'a>(vec: &'a Vec<&'a Player>, player: &'a Player) -> Vec<&'a Player> {
+    let mut without = vec.clone();
+    without.remove(vec.iter().position(|this| this == &player).unwrap());
+    assert!(!without.contains(&&player));
+    without
+}
+
+pub fn get_name(player: &Player) -> String {
+    player.info.as_ref().map_or("Unknown".to_string(),|info| info.name.clone())
+}
+
+pub fn get_min_dist(player: &Player, everyone_else: &Vec<&Player>) -> f32 {
+    let mut min: f32 = INFINITY;
+    for other_player in everyone_else {
+        let dist = get_dist(player,other_player);
+        if dist < min {
+            min = dist;
+        }
+    }
+    min
+}
+
+pub fn get_min_dist_player<'a>(player: &'a Player, everyone_else: &'a Vec<&'a Player>) -> &'a Player {
+    let mut min: f32 = INFINITY;
+    let mut idx: usize = 0;
+    let mut i: usize = 0;
+    for other_player in everyone_else {
+        let dist = get_dist(player,other_player);
+        if dist < min {
+            min = dist;
+            idx = i;
+        }
+        i += 1;
+    }
+    everyone_else[idx]
+}
+
+pub fn get_min_dist_name(player: &Player, everyone_else: &Vec<&Player>) -> String {
+    let mut min: f32 = INFINITY;
+    let mut idx: usize = 0;
+    let mut i: usize = 0;
+    for other_player in everyone_else {
+        let dist = get_dist(player,other_player);
+        if dist < min {
+            min = dist;
+            idx = i;
+        }
+        i += 1;
+    }
+    get_name(everyone_else[idx])
+}
+
+pub fn get_dist(p1: &Player, p2: &Player) -> f32 {
+    let positions = (p1.position, p2.position);
+    let dist = (positions.0.x - positions.1.x, positions.0.y - positions.1.y, positions.0.z - positions.1.z);
+    (dist.0 * dist.0 + dist.1 * dist.1 + dist.2 * dist.2).sqrt()
+}
+
+pub fn find_soldiers(soldiers: Vec<&Player>,team: Team) -> Vec<&Player> {
+    find_on_team(soldiers, team,2)
+}
+
+pub fn find_medic(medics: Vec<&Player>,team: Team) -> &Player {
+    find_on_team(medics, team, 1)[0]
+}
+
+pub fn find_on_team(players: Vec<&Player>, team: Team, max_capacity: usize) -> Vec<&Player> {
+    let mut team_players: Vec<&Player> = Vec::with_capacity(max_capacity);
+    for player in players {
+        if player.team == team {
+            team_players.push(player);
+        }
+    }
+    team_players
+}
