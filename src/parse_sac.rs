@@ -303,9 +303,8 @@ pub fn find_sac_start(soldiers: Vec<&Player>, medic: &Player, soldier_team: Vec<
             let med_dist = get_dist(soldier,medic);
             let team_dist = get_min_dist(soldier,&everyone_else);
             let min_dist_player = get_min_dist_player(soldier,&everyone_else);
-            continue;
-            println!("--------------\nplayer: {} ({})\nmed dist: {}\nteam dist: {}\nteam: {} ({})\n--------------",
-                     get_name(soldier),soldier.state == PlayerState::Alive,med_dist,team_dist,get_name(min_dist_player),min_dist_player.class.to_string());
+            // println!("--------------\nplayer: {} ({})\nmed dist: {}\nteam dist: {}\nteam: {} ({})\n--------------",
+            //          get_name(soldier),soldier.state == PlayerState::Alive,med_dist,team_dist,get_name(min_dist_player),min_dist_player.class.to_string());
             if med_dist < SAC_DISTANCE && med_dist < team_dist {
                 // sac probably happening
                 println!("{} is sacing {} on tick {}",get_name(soldier),get_name(medic),tick);
