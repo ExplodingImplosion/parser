@@ -14,11 +14,13 @@ matt_rolltide is sacing the kitchen mid (bacon egg and  on tick 29337
 5 30608
 --------
 matt_rolltide is sacing the kitchen mid (bacon egg and  on tick 30608
+There's a chance that le bug is happening where there's 2 soldiers close to each other but closer to the medic, and every tick they alternate technically sac'ing! fuck! 30610
 --------
 5 30608
 5 30610
 --------
 matt_rolltide is sacing the kitchen mid (bacon egg and  on tick 30610
+There's a chance that le bug is happening where there's 2 soldiers close to each other but closer to the medic, and every tick they alternate technically sac'ing! fuck! 30634
 --------
 5 30610
 5 30634
@@ -48,6 +50,7 @@ matt_rolltide is sacing the kitchen mid (bacon egg and  on tick 50554
 5 50694
 --------
 matt_rolltide is sacing the kitchen mid (bacon egg and  on tick 50694
+There's a chance that le bug is happening where there's 2 soldiers close to each other but closer to the medic, and every tick they alternate technically sac'ing! fuck! 50764
 --------
 5 50747
 5 50764
@@ -58,11 +61,13 @@ matt_rolltide is sacing the kitchen mid (bacon egg and  on tick 50764
 5 50889
 --------
 matt_rolltide is sacing the kitchen mid (bacon egg and  on tick 50889
+There's a chance that le bug is happening where there's 2 soldiers close to each other but closer to the medic, and every tick they alternate technically sac'ing! fuck! 50979
 --------
 5 50935
 5 50979
 --------
 matt_rolltide is sacing the kitchen mid (bacon egg and  on tick 50979
+There's a chance that le bug is happening where there's 2 soldiers close to each other but closer to the medic, and every tick they alternate technically sac'ing! fuck! 51034
 --------
 5 51011
 5 51034
@@ -85,6 +90,7 @@ matt_rolltide is sacing the kitchen mid (bacon egg and  on tick 61977
 5 62942
 --------
 matt_rolltide is sacing the kitchen mid (bacon egg and  on tick 62942
+There's a chance that le bug is happening where there's 2 soldiers close to each other but closer to the medic, and every tick they alternate technically sac'ing! fuck! 62973
 --------
 5 62961
 5 62973
@@ -105,21 +111,25 @@ matt_rolltide is sacing the kitchen mid (bacon egg and  on tick 63443
 9 64273
 --------
 bobmode #Freak is sacing the kitchen mid (bacon egg and  on tick 64273
+There's a chance that le bug is happening where there's 2 soldiers close to each other but closer to the medic, and every tick they alternate technically sac'ing! fuck! 64487
 --------
 9 64485
 9 64487
 --------
 bobmode #Freak is sacing the kitchen mid (bacon egg and  on tick 64487
+There's a chance that le bug is happening where there's 2 soldiers close to each other but closer to the medic, and every tick they alternate technically sac'ing! fuck! 64542
 --------
 9 64487
 9 64542
 --------
 bobmode #Freak is sacing the kitchen mid (bacon egg and  on tick 64542
+There's a chance that le bug is happening where there's 2 soldiers close to each other but closer to the medic, and every tick they alternate technically sac'ing! fuck! 64544
 --------
 9 64542
 9 64544
 --------
 bobmode #Freak is sacing the kitchen mid (bacon egg and  on tick 64544
+There's a chance that le bug is happening where there's 2 soldiers close to each other but closer to the medic, and every tick they alternate technically sac'ing! fuck! 64589
 --------
 9 64571
 9 64589
@@ -149,21 +159,25 @@ Bert. is sacing phasod on tick 90577
 11 98359
 --------
 fleapert #FMCL is sacing phasod on tick 98359
+There's a chance that le bug is happening where there's 2 soldiers close to each other but closer to the medic, and every tick they alternate technically sac'ing! fuck! 98361
 --------
 11 98359
 11 98361
 --------
 fleapert #FMCL is sacing phasod on tick 98361
+There's a chance that le bug is happening where there's 2 soldiers close to each other but closer to the medic, and every tick they alternate technically sac'ing! fuck! 98368
 --------
 11 98366
 11 98368
 --------
 fleapert #FMCL is sacing phasod on tick 98368
+There's a chance that le bug is happening where there's 2 soldiers close to each other but closer to the medic, and every tick they alternate technically sac'ing! fuck! 98455
 --------
 11 98453
 11 98455
 --------
 fleapert #FMCL is sacing phasod on tick 98455
+There's a chance that le bug is happening where there's 2 soldiers close to each other but closer to the medic, and every tick they alternate technically sac'ing! fuck! 98459
 --------
 11 98455
 11 98459

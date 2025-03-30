@@ -336,7 +336,7 @@ pub fn find_sac_start(soldiers: Vec<&Player>, medic: &Player, soldier_team: Vec<
                     demo_status.last_tick_with_sac = tick_info;
                     return DemoTick::from(0)
                 }
-                else if demo_status.last_tick_with_sac.1 == tick - 1 {
+                else if tick - demo_status.last_tick_with_sac.1 < 66 {
                     println!("There's a chance that le bug is happening where there's 2 soldiers close to each other but closer to the medic, and every tick they alternate technically sac'ing! fuck! {}",tick)
                 }
                 println!("--------\n{} {}\n{} {}\n--------",
