@@ -1,14 +1,139 @@
 blue on last 26311
+--------
+0 0
+5 27589
+--------
+matt_rolltide is sacing the kitchen mid (bacon egg and  on tick 27589
+--------
+5 27721
+5 29337
+--------
+matt_rolltide is sacing the kitchen mid (bacon egg and  on tick 29337
+--------
+5 29428
+5 30608
+--------
+matt_rolltide is sacing the kitchen mid (bacon egg and  on tick 30608
+--------
+5 30608
+5 30610
+--------
+matt_rolltide is sacing the kitchen mid (bacon egg and  on tick 30610
+--------
+5 30610
+5 30634
+--------
+matt_rolltide is sacing the kitchen mid (bacon egg and  on tick 30634
+--------
+5 30949
+5 31083
+--------
+matt_rolltide is sacing the kitchen mid (bacon egg and  on tick 31083
 blue off last 39344
 blue on last 43225
+--------
+5 31127
+9 43618
+--------
+bobmode #Freak is sacing the kitchen mid (bacon egg and  on tick 43618
 red capped blue's last 44416
 blue on last 49730
+--------
+9 43850
+5 50554
+--------
+matt_rolltide is sacing the kitchen mid (bacon egg and  on tick 50554
+--------
+5 50628
+5 50694
+--------
+matt_rolltide is sacing the kitchen mid (bacon egg and  on tick 50694
+--------
+5 50747
+5 50764
+--------
+matt_rolltide is sacing the kitchen mid (bacon egg and  on tick 50764
+--------
+5 50790
+5 50889
+--------
+matt_rolltide is sacing the kitchen mid (bacon egg and  on tick 50889
+--------
+5 50935
+5 50979
+--------
+matt_rolltide is sacing the kitchen mid (bacon egg and  on tick 50979
+--------
+5 51011
+5 51034
+--------
+matt_rolltide is sacing the kitchen mid (bacon egg and  on tick 51034
+--------
+5 51085
+5 51456
+--------
+matt_rolltide is sacing the kitchen mid (bacon egg and  on tick 51456
 blue off last 53862
 blue on last 60430
+--------
+5 51677
+5 61977
+--------
+matt_rolltide is sacing the kitchen mid (bacon egg and  on tick 61977
+--------
+5 62014
+5 62942
+--------
+matt_rolltide is sacing the kitchen mid (bacon egg and  on tick 62942
+--------
+5 62961
+5 62973
+--------
+matt_rolltide is sacing the kitchen mid (bacon egg and  on tick 62973
+--------
+5 63071
+5 63204
+--------
+matt_rolltide is sacing the kitchen mid (bacon egg and  on tick 63204
+--------
+5 63305
+5 63443
+--------
+matt_rolltide is sacing the kitchen mid (bacon egg and  on tick 63443
+--------
+5 63801
+9 64273
+--------
+bobmode #Freak is sacing the kitchen mid (bacon egg and  on tick 64273
+--------
+9 64485
+9 64487
+--------
+bobmode #Freak is sacing the kitchen mid (bacon egg and  on tick 64487
+--------
+9 64487
+9 64542
+--------
+bobmode #Freak is sacing the kitchen mid (bacon egg and  on tick 64542
+--------
+9 64542
+9 64544
+--------
+bobmode #Freak is sacing the kitchen mid (bacon egg and  on tick 64544
+--------
+9 64571
+9 64589
+--------
+bobmode #Freak is sacing the kitchen mid (bacon egg and  on tick 64589
+--------
+9 64605
+5 65332
+--------
+matt_rolltide is sacing the kitchen mid (bacon egg and  on tick 65332
 blue off last 66039
 red on last 78130
 --------
-0 0
+5 65395
 10 81389
 --------
 Bert. is sacing phasod on tick 81389
@@ -46,19 +171,39 @@ fleapert #FMCL is sacing phasod on tick 98455
 fleapert #FMCL is sacing phasod on tick 98459
 red off last 99306
 blue on last 107622
+--------
+11 98487
+5 109120
+--------
+matt_rolltide is sacing the kitchen mid (bacon egg and  on tick 109120
+--------
+5 109128
+5 109223
+--------
+matt_rolltide is sacing the kitchen mid (bacon egg and  on tick 109223
+--------
+5 109244
+5 109353
+--------
+matt_rolltide is sacing the kitchen mid (bacon egg and  on tick 109353
 blue off last 111082
 red on last 121234
 --------
-11 98487
+5 109928
 10 123594
 --------
 Bert. is sacing phasod on tick 123594
 blue capped red's last 125442
 blue on last 131217
+--------
+10 123772
+5 132694
+--------
+matt_rolltide is sacing the kitchen mid (bacon egg and  on tick 132694
 red capped blue's last 132798
 red on last 138059
 --------
-10 123772
+5 132694
 11 140092
 --------
 fleapert #FMCL is sacing phasod on tick 140092
