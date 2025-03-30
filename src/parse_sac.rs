@@ -157,7 +157,7 @@ impl ParsedDemo {
                     let blue_soldiers = find_soldiers(soldiers,Team::Blue);
                     let red_medics = find_medic(medics,Team::Red);
                     if is_alive(red_medics) {
-                        find_sac_start(blue_soldiers, red_medics, blue_team, tick,self);
+                        find_sac_start(blue_soldiers, red_medics, blue_team, red_team, tick,self);
                     }
                 }
                 else if team_on_last == Team::Blue {
@@ -165,7 +165,7 @@ impl ParsedDemo {
                     let red_soldiers = find_soldiers(soldiers,Team::Red);
                     let blue_medics = find_medic(medics,Team::Blue);
                     if is_alive(blue_medics) {
-                        find_sac_start(red_soldiers, blue_medics, red_team, tick,self);
+                        find_sac_start(red_soldiers, blue_medics, red_team, blue_team, tick,self);
                     }
                 }
 
@@ -305,7 +305,7 @@ pub fn parse_demo(demo: Demo) -> Result<ParsedDemo,ParseError> {
 // player bounding box sizes are 48-49 hu's deep and wide (there's inconsistent information online).
 // 21 bounding boxes * 48.5 estimated bb size = 1018.5 hu's.
 const SAC_DISTANCE: f32 = 1018.5;
-pub fn find_sac_start(soldiers: Vec<&Player>, medic: &Player, soldier_team: Vec<&Player>, tick: DemoTick, demo_status: &mut ParsedDemo) -> DemoTick {
+pub fn find_sac_start(soldiers: Vec<&Player>, medic: &Player, soldier_team: Vec<&Player>, other_team: Vec<&Player>, tick: DemoTick, demo_status: &mut ParsedDemo) -> DemoTick {
     for soldier in soldiers{
         if Some(soldier).unwrap() == soldier{
             if !is_alive(soldier) {
@@ -317,12 +317,13 @@ pub fn find_sac_start(soldiers: Vec<&Player>, medic: &Player, soldier_team: Vec<
             // everyone_else.remove(soldier_pos.unwrap());
             // assert!(!everyone_else.clone().contains(soldier));
             let everyone_else = get_without(&soldier_team,soldier);
+            let other_team_alive = get_without(&other_team,soldier);
             let med_dist = get_dist(soldier,medic);
             let team_dist = get_min_dist(soldier,&everyone_else);
             let min_dist_player = get_min_dist_player(soldier,&everyone_else);
             // println!("--------------\nplayer: {} ({})\nmed dist: {}\nteam dist: {}\nteam: {} ({})\n--------------",
             //          get_name(soldier),soldier.state == PlayerState::Alive,med_dist,team_dist,get_name(min_dist_player),min_dist_player.class.to_string());
-            if med_dist < SAC_DISTANCE && med_dist < team_dist {
+            if med_dist < SAC_DISTANCE && med_dist < team_dist  &&{
                 let tick_info = (soldier.entity,tick);
                 // Maybe make this -1 bigger to increase the threshold, but rn this bit here makes it
                 // so that it's not just flooding output with sac ticks. this will eventually fuck up
@@ -343,6 +344,7 @@ pub fn find_sac_start(soldiers: Vec<&Player>, medic: &Player, soldier_team: Vec<
                          demo_status.last_tick_with_sac.0,demo_status.last_tick_with_sac.1,soldier.entity,tick);
                 // sac probably happening
                 println!("{} is sacing {} on tick {}",get_name(soldier),get_name(medic),tick);
+                println!("soldier team size: {} other team size: {}",everyone_else.len(),other_team_alive.len());
                 demo_status.last_tick_with_sac = tick_info;
                 if soldier.team == Team::Red {
                     demo_status.red_sac_ticks.push(tick_info);
