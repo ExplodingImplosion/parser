@@ -334,12 +334,10 @@ pub fn find_sac_start(soldiers: Vec<&Player>, medic: &Player, soldier_team: Vec<
                 // is entity ID even included in this tuple? You can just check the tick num. Is there
                 // even a point to last_tick_with_sac entity?!
                 // FIXME change this!
-                if demo_status.last_tick_with_sac == (soldier.entity, tick - 1) {
+                if tick - demo_status.last_tick_with_sac.1 < 66 {
+                    println!("Avoiding the bug where people are too close to medic etc on tick {}",tick);
                     demo_status.last_tick_with_sac = tick_info;
                     return DemoTick::from(0)
-                }
-                else if tick - demo_status.last_tick_with_sac.1 < 66 {
-                    println!("There's a chance that le bug is happening where there's 2 soldiers close to each other but closer to the medic, and every tick they alternate technically sac'ing! fuck! {}",tick)
                 }
                 println!("--------\n{} {}\n{} {}\n--------",
                          demo_status.last_tick_with_sac.0,demo_status.last_tick_with_sac.1,soldier.entity,tick);
