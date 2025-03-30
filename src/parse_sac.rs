@@ -335,7 +335,6 @@ pub fn find_sac_start(soldiers: Vec<&Player>, medic: &Player, soldier_team: Vec<
                 // even a point to last_tick_with_sac entity?!
                 // FIXME change this!
                 if tick - demo_status.last_tick_with_sac.1 < 66 {
-                    println!("Avoiding the bug where people are too close to medic etc on tick {}",tick);
                     demo_status.last_tick_with_sac = tick_info;
                     return DemoTick::from(0)
                 }
