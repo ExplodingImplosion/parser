@@ -11,6 +11,7 @@ use crate::demo::vector::VectorXY;
 use crate::{Demo, DemoParser,ParseError};
 use crate::demo::data::game_state::Player;
 use crate::demo::gameevent_gen::GameEventType::TeamPlayPointCaptured;
+use crate::demo::message::packetentities::EntityId;
 
 #[derive(Debug,Serialize,Deserialize,PartialEq,Clone)]
 enum StratType {
@@ -69,6 +70,7 @@ pub struct ParsedDemo {
     pub red_off_last_ticks: Vec<DemoTick>,
     pub blue_on_last_ticks: Vec<DemoTick>,
     pub blue_off_last_ticks: Vec<DemoTick>,
+    pub last_tick_with_sac: (EntityId, DemoTick),
 }
 
 impl ParsedDemo {
@@ -86,6 +88,7 @@ impl ParsedDemo {
             blue_on_last_ticks: Vec::new(),
             red_off_last_ticks: Vec::new(),
             blue_off_last_ticks: Vec::new(),
+            last_tick_with_sac: Default::default(),
         }
     }
 
@@ -149,12 +152,16 @@ impl ParsedDemo {
                     let blue_soldiers = find_soldiers(soldiers,Team::Blue);
                     let red_medics = find_medic(medics,Team::Red);
                     if is_alive(red_medics) {
-                        find_sac_start(blue_soldiers, red_medics, blue_team, tick);
+                        find_sac_start(blue_soldiers, red_medics, blue_team, tick,self);
                     }
                 }
                 else if team_on_last == Team::Blue {
                     // red team might be sac'ing in
-
+                    let red_soldiers = find_soldiers(soldiers,Team::Red);
+                    let blue_medics = find_medic(medics,Team::Blue);
+                    if is_alive(blue_medics) {
+                        find_sac_start(red_soldiers, blue_medics, red_team, tick,self);
+                    }
                 }
 
                 self.last_tick = tick;
@@ -293,7 +300,7 @@ pub fn parse_demo(demo: Demo) -> Result<ParsedDemo,ParseError> {
 // player bounding box sizes are 48-49 hu's deep and wide (there's inconsistent information online).
 // 21 bounding boxes * 48.5 estimated bb size = 1018.5 hu's.
 const SAC_DISTANCE: f32 = 1018.5;
-pub fn find_sac_start(soldiers: Vec<&Player>, medic: &Player, soldier_team: Vec<&Player>, tick: DemoTick,) -> DemoTick {
+pub fn find_sac_start(soldiers: Vec<&Player>, medic: &Player, soldier_team: Vec<&Player>, tick: DemoTick, demo_status: &mut ParsedDemo) -> DemoTick {
     for soldier in soldiers{
         if Some(soldier).unwrap() == soldier{
             if !is_alive(soldier) {
@@ -311,8 +318,19 @@ pub fn find_sac_start(soldiers: Vec<&Player>, medic: &Player, soldier_team: Vec<
             // println!("--------------\nplayer: {} ({})\nmed dist: {}\nteam dist: {}\nteam: {} ({})\n--------------",
             //          get_name(soldier),soldier.state == PlayerState::Alive,med_dist,team_dist,get_name(min_dist_player),min_dist_player.class.to_string());
             if med_dist < SAC_DISTANCE && med_dist < team_dist {
+                // Maybe make this -1 bigger to increase the threshold, but rn this bit here makes it
+                // so that it's not just flooding output with sac ticks. this will eventually fuck up
+                // when there are 2 soldiers close to each other because this happens in a loop
+                // FIXME change this!
+                if demo_status.last_tick_with_sac == (soldier.entity, tick - 1) {
+                    demo_status.last_tick_with_sac = (soldier.entity,tick);
+                    return DemoTick::from(0)
+                }
+                println!("--------\n{} {}\n{} {}\n--------",
+                         demo_status.last_tick_with_sac.0,demo_status.last_tick_with_sac.1,soldier.entity,tick);
                 // sac probably happening
                 println!("{} is sacing {} on tick {}",get_name(soldier),get_name(medic),tick);
+                demo_status.last_tick_with_sac = (soldier.entity,tick);
                 return tick;
             }
         }
