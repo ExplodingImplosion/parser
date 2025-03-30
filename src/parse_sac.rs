@@ -323,7 +323,8 @@ pub fn find_sac_start(soldiers: Vec<&Player>, medic: &Player, soldier_team: Vec<
             let min_dist_player = get_min_dist_player(soldier,&everyone_else);
             // println!("--------------\nplayer: {} ({})\nmed dist: {}\nteam dist: {}\nteam: {} ({})\n--------------",
             //          get_name(soldier),soldier.state == PlayerState::Alive,med_dist,team_dist,get_name(min_dist_player),min_dist_player.class.to_string());
-            if med_dist < SAC_DISTANCE && med_dist < team_dist  &&{
+            //                                                      At least 5 players must be alive on both teams
+            if med_dist < SAC_DISTANCE && med_dist < team_dist && everyone_else.len() > 3 && other_team_alive.len() > 4{
                 let tick_info = (soldier.entity,tick);
                 // Maybe make this -1 bigger to increase the threshold, but rn this bit here makes it
                 // so that it's not just flooding output with sac ticks. this will eventually fuck up
