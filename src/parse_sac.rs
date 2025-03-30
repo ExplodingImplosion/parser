@@ -71,6 +71,8 @@ pub struct ParsedDemo {
     pub blue_on_last_ticks: Vec<DemoTick>,
     pub blue_off_last_ticks: Vec<DemoTick>,
     pub last_tick_with_sac: (EntityId, DemoTick),
+    pub red_sac_ticks: Vec<(EntityId,DemoTick)>,
+    pub blue_sac_ticks: Vec<(EntityId,DemoTick)>,
 }
 
 impl ParsedDemo {
@@ -89,6 +91,9 @@ impl ParsedDemo {
             red_off_last_ticks: Vec::new(),
             blue_off_last_ticks: Vec::new(),
             last_tick_with_sac: Default::default(),
+            // 30 sacs seems reasonable, right?
+            red_sac_ticks: Vec::with_capacity(30),
+            blue_sac_ticks: Vec::with_capacity(30),
         }
     }
 
@@ -248,7 +253,7 @@ impl ParsedDemo {
         team_on_last
     }
 
-    }
+}
 
 
 pub fn parse_demo(demo: Demo) -> Result<ParsedDemo,ParseError> {
@@ -318,19 +323,33 @@ pub fn find_sac_start(soldiers: Vec<&Player>, medic: &Player, soldier_team: Vec<
             // println!("--------------\nplayer: {} ({})\nmed dist: {}\nteam dist: {}\nteam: {} ({})\n--------------",
             //          get_name(soldier),soldier.state == PlayerState::Alive,med_dist,team_dist,get_name(min_dist_player),min_dist_player.class.to_string());
             if med_dist < SAC_DISTANCE && med_dist < team_dist {
+                let tick_info = (soldier.entity,tick);
                 // Maybe make this -1 bigger to increase the threshold, but rn this bit here makes it
                 // so that it's not just flooding output with sac ticks. this will eventually fuck up
-                // when there are 2 soldiers close to each other because this happens in a loop
+                // when there are 2 soldiers close to each other because this happens in a loop.
+                // The issue is that it's comparing both the tick nums and the entity ID, when it should
+                // be prioritizing the tick num, and then invloving the entity ID, but wait why the fuck
+                // is entity ID even included in this tuple? You can just check the tick num. Is there
+                // even a point to last_tick_with_sac entity?!
                 // FIXME change this!
                 if demo_status.last_tick_with_sac == (soldier.entity, tick - 1) {
-                    demo_status.last_tick_with_sac = (soldier.entity,tick);
+                    demo_status.last_tick_with_sac = tick_info;
                     return DemoTick::from(0)
+                }
+                else if demo_status.last_tick_with_sac.1 == tick - 1 {
+                    println!("There's a chance that le bug is happening where there's 2 soldiers close to each other but closer to the medic, and every tick they alternate technically sac'ing! fuck! {}",tick)
                 }
                 println!("--------\n{} {}\n{} {}\n--------",
                          demo_status.last_tick_with_sac.0,demo_status.last_tick_with_sac.1,soldier.entity,tick);
                 // sac probably happening
                 println!("{} is sacing {} on tick {}",get_name(soldier),get_name(medic),tick);
-                demo_status.last_tick_with_sac = (soldier.entity,tick);
+                demo_status.last_tick_with_sac = tick_info;
+                if soldier.team == Team::Red {
+                    demo_status.red_sac_ticks.push(tick_info);
+                }
+                else if soldier.team == Team::Blue {
+                    demo_status.blue_sac_ticks.push(tick_info);
+                }
                 return tick;
             }
         }
