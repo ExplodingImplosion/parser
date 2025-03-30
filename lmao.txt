@@ -1,87 +1,69 @@
-blue on last 6965
+blue on last 26311
 --------
 0 0
-4 10755
+5 27589
 --------
-Amadeus is sacing trydon on tick 10755
-soldier team size: 5 other team size: 6
---------
-4 10798
-4 11547
---------
-Amadeus is sacing trydon on tick 11547
-soldier team size: 5 other team size: 6
-blue off last 13326
-blue on last 15319
---------
-8 11983
-8 15968
---------
-BIG bl0ke is sacing trydon on tick 15968
-soldier team size: 5 other team size: 6
-red capped blue's last 16443
-blue on last 22734
---------
-8 16192
-4 23315
---------
-Amadeus is sacing trydon on tick 23315
+matt_rolltide is sacing the kitchen mid (bacon egg and  on tick 27589
 soldier team size: 5 other team size: 5
-red capped blue's last 24554
-blue on last 32528
-red capped blue's last 32932
-red on last 38607
 --------
-4 23418
-6 39229
+5 27721
+5 29337
 --------
-Brauner Gauner is sacing :cigarette: on tick 39229
-soldier team size: 5 other team size: 6
---------
-6 39253
-10 39551
---------
-K→daz is sacing :cigarette: on tick 39551
-soldier team size: 5 other team size: 6
---------
-10 39756
-6 40872
---------
-Brauner Gauner is sacing :cigarette: on tick 40872
-soldier team size: 4 other team size: 6
---------
-6 41106
-10 41221
---------
-K→daz is sacing :cigarette: on tick 41221
+matt_rolltide is sacing the kitchen mid (bacon egg and  on tick 29337
 soldier team size: 4 other team size: 5
-red off last 42395
-red on last 44334
+blue off last 39344
+blue on last 43225
+red capped blue's last 44416
+blue on last 49730
 --------
-6 41728
-6 45928
+5 29428
+5 50554
 --------
-Brauner Gauner is sacing :cigarette: on tick 45928
-soldier team size: 5 other team size: 6
-red off last 51619
-blue on last 54732
-blue off last 57560
-blue on last 61243
-blue off last 64413
-blue on last 69988
+matt_rolltide is sacing the kitchen mid (bacon egg and  on tick 50554
+soldier team size: 5 other team size: 5
+blue off last 53862
+blue on last 60430
 --------
-6 46287
-4 75537
+5 50628
+5 61977
 --------
-Amadeus is sacing trydon on tick 75537
+matt_rolltide is sacing the kitchen mid (bacon egg and  on tick 61977
+soldier team size: 5 other team size: 5
+--------
+5 62014
+5 65345
+--------
+matt_rolltide is sacing the kitchen mid (bacon egg and  on tick 65345
+soldier team size: 4 other team size: 5
+blue off last 66039
+red on last 78130
+--------
+5 65395
+10 81389
+--------
+Bert. is sacing phasod on tick 81389
 soldier team size: 4 other team size: 6
-blue off last 80300
-red on last 85381
-blue capped red's last 94032
-red on last 99778
-blue capped red's last 104336
-red on last 111481
-blue capped red's last 112013
-red on last 116424
-blue capped red's last 117031
-{"id":"default","winner":"spectator","player_id_list":[],"strats":[],"last_tick":121403,"player_info":[{"classes":{},"name":"SourceTV","userId":2,"steamId":"BOT","team":"other"},{"classes":{},"name":"PAPA CHANGO LARGE","userId":3,"steamId":"[U:1:862459441]","team":"other"},{"classes":{},"name":"trydon","userId":4,"steamId":"[U:1:1268952020]","team":"other"},{"classes":{},"name":"Amadeus","userId":5,"steamId":"[U:1:70692498]","team":"other"},{"classes":{},"name":"golfbob","userId":6,"steamId":"[U:1:106366105]","team":"other"},{"classes":{},"name":"Brauner Gauner","userId":8,"steamId":"[U:1:357025965]","team":"other"},{"classes":{},"name":":cigarette:","userId":10,"steamId":"[U:1:1828855148]","team":"other"},{"classes":{},"name":"BIG bl0ke","userId":11,"steamId":"[U:1:52260848]","team":"other"},{"classes":{},"name":"Atillacoin","userId":12,"steamId":"[U:1:176939364]","team":"other"},{"classes":{},"name":"K→daz","userId":13,"steamId":"[U:1:136029203]","team":"other"},{"classes":{},"name":"сукаpult","userId":14,"steamId":"[U:1:77122682]","team":"other"},{"classes":{},"name":"floatkrabb","userId":15,"steamId":"[U:1:210714615]","team":"other"},{"classes":{},"name":"frank","userId":16,"steamId":"[U:1:328600638]","team":"other"}],"header":{"demo_type":"HL2DEMO","version":3,"protocol":24,"server":"serveme.tf #1474745","nick":"SourceTV Demo","map":"cp_process_f12","game":"tf","duration":1821.0449,"ticks":121403,"frames":121360,"signon":976465},"red_on_last_ticks":[38607,44334,85381,99778,111481,116424],"red_off_last_ticks":[42395,51619],"blue_on_last_ticks":[6965,15319,22734,32528,54732,61243,69988],"blue_off_last_ticks":[13326,57560,64413,80300],"last_tick_with_sac":[4,75619],"red_sac_ticks":[[4,10755],[4,11547],[8,15968],[4,23315],[4,75537]],"blue_sac_ticks":[[6,39229],[10,39551],[6,40872],[10,41221],[6,45928]]}
+blue capped red's last 81783
+red on last 86933
+--------
+10 81403
+10 90577
+--------
+Bert. is sacing phasod on tick 90577
+soldier team size: 4 other team size: 6
+red off last 99306
+blue on last 107622
+blue off last 111082
+red on last 121234
+--------
+10 90654
+10 123594
+--------
+Bert. is sacing phasod on tick 123594
+soldier team size: 4 other team size: 5
+blue capped red's last 125442
+blue on last 131217
+red capped blue's last 132798
+red on last 138059
+blue capped red's last 140591
+{"id":"default","winner":"spectator","player_id_list":[],"strats":[],"last_tick":141259,"player_info":[{"classes":{},"name":"SourceTV","userId":2,"steamId":"BOT","team":"other"},{"classes":{},"name":"the kitchen mid (bacon egg and ","userId":3,"steamId":"[U:1:1086401461]","team":"other"},{"classes":{},"name":"MANE6 NeoTenic","userId":4,"steamId":"[U:1:65672683]","team":"other"},{"classes":{},"name":"A$AP CACTUS","userId":5,"steamId":"[U:1:364121086]","team":"other"},{"classes":{},"name":"matt_rolltide","userId":6,"steamId":"[U:1:836461436]","team":"other"},{"classes":{},"name":"Jesus H. Percocet","userId":7,"steamId":"[U:1:15704397]","team":"other"},{"classes":{},"name":"Crazed","userId":8,"steamId":"[U:1:1038174810]","team":"other"},{"classes":{},"name":"bobmode #Freak","userId":12,"steamId":"[U:1:264182612]","team":"other"},{"classes":{},"name":"Bert.","userId":13,"steamId":"[U:1:180400618]","team":"other"},{"classes":{},"name":"fleapert #FMCL","userId":15,"steamId":"[U:1:1602489843]","team":"other"},{"classes":{},"name":"thug pootis 420 #FMCL","userId":19,"steamId":"[U:1:331804838]","team":"other"},{"classes":{},"name":"phasod","userId":17,"steamId":"[U:1:153919263]","team":"other"},{"classes":{},"name":"Vanguard","userId":21,"steamId":"[U:1:133637068]","team":"other"},{"classes":{},"name":"mary","userId":24,"steamId":"[U:1:426078340]","team":"other"},{"classes":{},"name":"Drew","userId":25,"steamId":"[U:1:116595300]","team":"other"},{"classes":{},"name":"eatyourheartout","userId":27,"steamId":"[U:1:73086130]","team":"other"}],"header":{"demo_type":"HL2DEMO","version":3,"protocol":24,"server":"na.serveme.tf #564198","nick":"SourceTV Demo","map":"cp_process_f12","game":"tf","duration":2118.885,"ticks":141259,"frames":120702,"signon":974074},"red_on_last_ticks":[78130,86933,121234,138059],"red_off_last_ticks":[99306],"blue_on_last_ticks":[26311,43225,49730,60430,107622,131217],"blue_off_last_ticks":[39344,53862,66039,111082],"last_tick_with_sac":[10,123772],"red_sac_ticks":[[5,27589],[5,29337],[5,50554],[5,61977],[5,65345]],"blue_sac_ticks":[[10,81389],[10,90577],[10,123594]]}
