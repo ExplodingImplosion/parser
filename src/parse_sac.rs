@@ -326,7 +326,7 @@ pub fn find_sac_start(soldiers: Vec<&Player>, medic: &Player, soldier_team: Vec<
             //                                                      At least 5 players must be alive on both teams
             if med_dist < SAC_DISTANCE && med_dist < team_dist && everyone_else.len() > 3 && other_team_alive.len() > 4{
                 let tick_info = (soldier.entity,tick);
-                // Maybe make this -1 bigger to increase the threshold, but rn this bit here makes it
+                // Maybe make this even bigger to increase the threshold, but rn this bit here makes it
                 // so that it's not just flooding output with sac ticks. this will eventually fuck up
                 // when there are 2 soldiers close to each other because this happens in a loop.
                 // The issue is that it's comparing both the tick nums and the entity ID, when it should
@@ -334,7 +334,7 @@ pub fn find_sac_start(soldiers: Vec<&Player>, medic: &Player, soldier_team: Vec<
                 // is entity ID even included in this tuple? You can just check the tick num. Is there
                 // even a point to last_tick_with_sac entity?!
                 // FIXME change this!
-                if tick - demo_status.last_tick_with_sac.1 < 66 {
+                if tick - demo_status.last_tick_with_sac.1 < (66*8) {
                     demo_status.last_tick_with_sac = tick_info;
                     return DemoTick::from(0)
                 }
