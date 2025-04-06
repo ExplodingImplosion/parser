@@ -82,6 +82,8 @@ pub struct ParsedDemo {
     pub blue_last_capped_ticks: Vec<DemoTick>,
 }
 
+const lmaocapacity: usize = 30;
+
 impl ParsedDemo {
 
     pub fn new(header: Header) -> Self {
@@ -91,16 +93,19 @@ impl ParsedDemo {
             player_id_list: Vec::new(),
             strats: Vec::new(),
             last_tick: DemoTick::default(), // used while looping ?
-            player_info: Vec::new(),
+            player_info: Vec::with_capacity(12),
             header,
-            red_on_last_ticks: Vec::new(),
-            blue_on_last_ticks: Vec::new(),
-            red_off_last_ticks: Vec::new(),
-            blue_off_last_ticks: Vec::new(),
+            red_on_last_ticks: Vec::with_capacity(lmaocapacity),
+            blue_on_last_ticks: Vec::with_capacity(lmaocapacity),
+            red_off_last_ticks: Vec::with_capacity(lmaocapacity),
+            blue_off_last_ticks: Vec::with_capacity(lmaocapacity),
             last_tick_with_sac: Default::default(),
             // 30 sacs seems reasonable, right?
-            red_sac_ticks: Vec::with_capacity(30),
-            blue_sac_ticks: Vec::with_capacity(30),
+            red_sac_ticks: Vec::with_capacity(lmaocapacity),
+            blue_sac_ticks: Vec::with_capacity(lmaocapacity),
+
+            red_last_capped_ticks: Vec::with_capacity(lmaocapacity),
+            blue_last_capped_ticks: Vec::with_capacity(lmaocapacity),
         }
     }
 
