@@ -66,13 +66,20 @@ pub struct ParsedDemo {
     pub last_tick: DemoTick, // used while looping ?
     pub player_info: Vec<UserInfo>,
     pub header: Header,
+
     pub red_on_last_ticks: Vec<DemoTick>,
     pub red_off_last_ticks: Vec<DemoTick>,
+
     pub blue_on_last_ticks: Vec<DemoTick>,
     pub blue_off_last_ticks: Vec<DemoTick>,
+
     pub last_tick_with_sac: (EntityId, DemoTick),
+
     pub red_sac_ticks: Vec<(EntityId,DemoTick)>,
     pub blue_sac_ticks: Vec<(EntityId,DemoTick)>,
+
+    pub red_last_capped_ticks: Vec<DemoTick>,
+    pub blue_last_capped_ticks: Vec<DemoTick>,
 }
 
 impl ParsedDemo {
@@ -230,6 +237,7 @@ impl ParsedDemo {
                         if event_tick == &tick {
                             if event.team == Team::Blue as u8 {
                                 println!("blue capped red's last {}", tick);
+                                self.red_last_capped_ticks.push(tick);
                             } else {
                                 println!("What the fuck?!")
                             }
@@ -240,6 +248,7 @@ impl ParsedDemo {
                         if event_tick == &tick {
                             if event.team == Team::Red as u8 {
                                 println!("red capped blue's last {}", tick);
+                                self.blue_last_capped_ticks.push(tick);
                             } else {
                                 println!("What the fuck?!")
                             }
