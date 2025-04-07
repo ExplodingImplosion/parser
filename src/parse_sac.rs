@@ -80,6 +80,9 @@ pub struct ParsedDemo {
 
     pub red_last_capped_ticks: Vec<DemoTick>,
     pub blue_last_capped_ticks: Vec<DemoTick>,
+
+    pub red_med_deaths_on_last: Vec<DemoTick>,
+    pub blue_med_deaths_on_last: Vec<DemoTick>,
 }
 
 const lmaocapacity: usize = 30;
@@ -106,6 +109,8 @@ impl ParsedDemo {
 
             red_last_capped_ticks: Vec::with_capacity(lmaocapacity),
             blue_last_capped_ticks: Vec::with_capacity(lmaocapacity),
+            red_med_deaths_on_last: Vec::with_capacity(lmaocapacity),
+            blue_med_deaths_on_last: Vec::with_capacity(lmaocapacity),
         }
     }
 
@@ -122,11 +127,11 @@ impl ParsedDemo {
             for _tick in u32::from(self.last_tick)..u32::from(game_state.tick) {
                 let tick = game_state.tick;
 
-                let mut blue_team: Vec<&Player> = vec![];
-                let mut red_team: Vec<&Player> = vec![];
-                let mut soldiers: Vec<&Player> = vec![];
-                let mut medics: Vec<&Player> = vec![];
-                let mut demos: Vec<&Player> = vec![];
+                let mut blue_team: Vec<&Player> = Vec::with_capacity(6);
+                let mut red_team: Vec<&Player> = Vec::with_capacity(6);
+                let mut soldiers: Vec<&Player> = Vec::with_capacity(4);
+                let mut medics: Vec<&Player> = Vec::with_capacity(2);
+                let mut demos: Vec<&Player> = Vec::with_capacity(2);
 
                 // fill up the above stuff for this frame
                 for (index, mut player) in game_state.players.iter().enumerate() {
@@ -181,8 +186,51 @@ impl ParsedDemo {
                     }
                 }
 
+                // Calling this here means events are looped thru twice but fuck off!
+                self.get_defending_med_died_on_last(team_on_last,game_state,tick);
+
                 self.last_tick = tick;
 
+            }
+        }
+    }
+
+    fn get_defending_med_died_on_last(&mut self, team_on_last: Team, game_state: &GameState, tick: DemoTick) {
+        // skip if not on last
+        if team_on_last != Team::Red && team_on_last != Team::Blue {
+            return
+        }
+        for (event_tick, event) in game_state.events.iter() {
+            // skip events from earlier ticks
+            if event_tick != &tick {
+                continue;
+            }
+            match event {
+                GameEvent::MedicDeath(event) => {
+                    let mut medics: Vec<&Player> = Vec::with_capacity(1);
+                    for (index, mut player) in game_state.players.iter().enumerate() {
+                        if player.class == Class::Medic && player.team == team_on_last {
+                            medics.push(player);
+                        }
+                    }
+                    assert_eq!(medics.len(), 1);
+                    let med = medics[0];
+                    if event.user_id == get_user_id(med).into(){
+                        // medic died
+                        println!("med {} on last died {}", get_name(med), tick);
+                        if team_on_last == Team::Red {
+                            self.red_med_deaths_on_last.push(tick);
+                        }
+                        else if team_on_last == Team::Blue {
+                            self.blue_med_deaths_on_last.push(tick);
+                        } else {
+                            println!("What the fuck?!");
+                            assert!(false)
+                        }
+                    }
+                }
+                _ => {
+                }
             }
         }
     }
@@ -244,7 +292,8 @@ impl ParsedDemo {
                                 println!("blue capped red's last {}", tick);
                                 self.red_last_capped_ticks.push(tick);
                             } else {
-                                println!("What the fuck?!")
+                                println!("What the fuck?!");
+                                assert!(false)
                             }
                         }
                         team_on_last = Team::Other;
@@ -255,7 +304,8 @@ impl ParsedDemo {
                                 println!("red capped blue's last {}", tick);
                                 self.blue_last_capped_ticks.push(tick);
                             } else {
-                                println!("What the fuck?!")
+                                println!("What the fuck?!");
+                                assert!(false)
                             }
                         }
                         team_on_last = Team::Other; // someone capped last, no longer on last
@@ -384,6 +434,10 @@ pub fn get_without<'a>(vec: &'a Vec<&'a Player>, player: &'a Player) -> Vec<&'a 
 
 pub fn get_name(player: &Player) -> String {
     player.info.as_ref().map_or("Unknown".to_string(),|info| info.name.clone())
+}
+
+pub fn get_user_id(player: &Player) -> UserId {
+    player.info.as_ref().unwrap().user_id
 }
 
 pub fn get_min_dist(player: &Player, everyone_else: &Vec<&Player>) -> f32 {
