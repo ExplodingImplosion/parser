@@ -87,6 +87,7 @@ const lmaocapacity: usize = 30;
 
 impl TeamTicks {
     pub fn new() -> Self {
+        assert_eq!(usize::MAX.wrapping_add(1),0);
         TeamTicks {
             on_last_ticks: Vec::with_capacity(lmaocapacity),
             off_last_ticks: Vec::with_capacity(lmaocapacity),
@@ -96,6 +97,7 @@ impl TeamTicks {
             med_deaths_on_last: Vec::with_capacity(lmaocapacity),
             sniper_ticks_per_last: Vec::with_capacity(lmaocapacity),
             spy_ticks_per_last: Vec::with_capacity(lmaocapacity),
+            on_last_idx: usize::MAX,
         }
     }
 
@@ -103,16 +105,15 @@ impl TeamTicks {
         self.on_last_ticks.push(tick);
         self.sniper_ticks_per_last.push(0);
         self.spy_ticks_per_last.push(0);
+        self.on_last_idx = self.on_last_idx.wrapping_add(1);
     }
-}
 
-pub fn assign_last<T>(vector: &Vec<T>, value: T) {
-    vector[vector.len() - 1] = value;
-    assert!(vector[vector.len() - 1] == value)
-}
+    pub fn increase_sniper_spy_ticks(&mut self, team: &Vec<&Player>) {
+        let i = self.on_last_idx;
+        self.sniper_ticks_per_last[i] += if find_class(&team,Class::Sniper) { 1 } else { 0 };
+        self.spy_ticks_per_last[i] += if find_class(&team,Class::Sniper) { 1 } else { 0 };
 
-pub fn increase_last<T>(vector: &Vec<T>, value: T) {
-    vector[vector.len() - 1] = *vector[vector.len() - 1] + value;
+    }
 }
 
 impl ParsedDemo {
@@ -194,8 +195,7 @@ impl ParsedDemo {
                     if is_alive(red_medics) {
                         find_sac_start(blue_soldiers, red_medics, &blue_team, red_team, tick,self);
                     }
-                    increase_last(&self.blue.sniper_ticks_per_last, if find_class(&blue_team,Class::Sniper) { 1 } else { 0 });
-                    increase_last(&self.blue.spy_ticks_per_last, if find_class(&blue_team,Class::Spy) { 1 } else { 0 });
+                    self.blue.increase_sniper_spy_ticks(&blue_team);
                 }
                 else if team_on_last == Team::Blue {
                     // red team might be sac'ing in
@@ -204,8 +204,7 @@ impl ParsedDemo {
                     if is_alive(blue_medics) {
                         find_sac_start(red_soldiers, blue_medics, &red_team, blue_team, tick,self);
                     }
-                    increase_last(&self.red.sniper_ticks_per_last, if find_class(&red_team,Class::Sniper) { 1 } else { 0 });
-                    increase_last(&self.red.spy_ticks_per_last, if find_class(&red_team,Class::Spy) { 1 } else { 0 });
+                    self.red.increase_sniper_spy_ticks(&red_team);
                 }
 
                 // Calling this here means events are looped thru twice but fuck off!
