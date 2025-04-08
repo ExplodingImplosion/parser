@@ -67,25 +67,53 @@ pub struct ParsedDemo {
     pub player_info: Vec<UserInfo>,
     pub header: Header,
 
-    pub red_on_last_ticks: Vec<DemoTick>,
-    pub red_off_last_ticks: Vec<DemoTick>,
-
-    pub blue_on_last_ticks: Vec<DemoTick>,
-    pub blue_off_last_ticks: Vec<DemoTick>,
-
+    pub red: TeamTicks,
+    pub blue: TeamTicks,
     pub last_tick_with_sac: (EntityId, DemoTick),
+}
 
-    pub red_sac_ticks: Vec<(EntityId,DemoTick)>,
-    pub blue_sac_ticks: Vec<(EntityId,DemoTick)>,
-
-    pub red_last_capped_ticks: Vec<DemoTick>,
-    pub blue_last_capped_ticks: Vec<DemoTick>,
-
-    pub red_med_deaths_on_last: Vec<DemoTick>,
-    pub blue_med_deaths_on_last: Vec<DemoTick>,
+#[derive(Debug,Serialize,Deserialize)]
+struct TeamTicks {
+    on_last_ticks: Vec<DemoTick>,
+    off_last_ticks: Vec<DemoTick>,
+    sac_ticks: Vec<(EntityId,DemoTick)>,
+    last_capped_ticks: Vec<DemoTick>,
+    med_deaths_on_last: Vec<DemoTick>,
+    sniper_ticks_per_last: Vec<u64>,
+    spy_ticks_per_last: Vec<u64>,
 }
 
 const lmaocapacity: usize = 30;
+
+impl TeamTicks {
+    pub fn new() -> Self {
+        TeamTicks {
+            on_last_ticks: Vec::with_capacity(lmaocapacity),
+            off_last_ticks: Vec::with_capacity(lmaocapacity),
+            // 30 sacs seems reasonable, right?
+            sac_ticks: Vec::with_capacity(lmaocapacity),
+            last_capped_ticks: Vec::with_capacity(lmaocapacity),
+            med_deaths_on_last: Vec::with_capacity(lmaocapacity),
+            sniper_ticks_per_last: Vec::with_capacity(lmaocapacity),
+            spy_ticks_per_last: Vec::with_capacity(lmaocapacity),
+        }
+    }
+
+    pub fn push_new_last(&mut self, tick: DemoTick) {
+        self.on_last_ticks.push(tick);
+        self.sniper_ticks_per_last.push(0);
+        self.spy_ticks_per_last.push(0);
+    }
+}
+
+pub fn assign_last<T>(vector: &Vec<T>, value: T) {
+    vector[vector.len() - 1] = value;
+    assert!(vector[vector.len() - 1] == value)
+}
+
+pub fn increase_last<T>(vector: &Vec<T>, value: T) {
+    vector[vector.len() - 1] = *vector[vector.len() - 1] + value;
+}
 
 impl ParsedDemo {
 
@@ -98,19 +126,9 @@ impl ParsedDemo {
             last_tick: DemoTick::default(), // used while looping ?
             player_info: Vec::with_capacity(12),
             header,
-            red_on_last_ticks: Vec::with_capacity(lmaocapacity),
-            blue_on_last_ticks: Vec::with_capacity(lmaocapacity),
-            red_off_last_ticks: Vec::with_capacity(lmaocapacity),
-            blue_off_last_ticks: Vec::with_capacity(lmaocapacity),
+            red: TeamTicks::new(),
+            blue: TeamTicks::new(),
             last_tick_with_sac: Default::default(),
-            // 30 sacs seems reasonable, right?
-            red_sac_ticks: Vec::with_capacity(lmaocapacity),
-            blue_sac_ticks: Vec::with_capacity(lmaocapacity),
-
-            red_last_capped_ticks: Vec::with_capacity(lmaocapacity),
-            blue_last_capped_ticks: Vec::with_capacity(lmaocapacity),
-            red_med_deaths_on_last: Vec::with_capacity(lmaocapacity),
-            blue_med_deaths_on_last: Vec::with_capacity(lmaocapacity),
         }
     }
 
@@ -174,16 +192,20 @@ impl ParsedDemo {
                     let blue_soldiers = find_soldiers(soldiers,Team::Blue);
                     let red_medics = find_medic(medics,Team::Red);
                     if is_alive(red_medics) {
-                        find_sac_start(blue_soldiers, red_medics, blue_team, red_team, tick,self);
+                        find_sac_start(blue_soldiers, red_medics, &blue_team, red_team, tick,self);
                     }
+                    increase_last(&self.blue.sniper_ticks_per_last, if find_class(&blue_team,Class::Sniper) { 1 } else { 0 });
+                    increase_last(&self.blue.spy_ticks_per_last, if find_class(&blue_team,Class::Spy) { 1 } else { 0 });
                 }
                 else if team_on_last == Team::Blue {
                     // red team might be sac'ing in
                     let red_soldiers = find_soldiers(soldiers,Team::Red);
                     let blue_medics = find_medic(medics,Team::Blue);
                     if is_alive(blue_medics) {
-                        find_sac_start(red_soldiers, blue_medics, red_team, blue_team, tick,self);
+                        find_sac_start(red_soldiers, blue_medics, &red_team, blue_team, tick,self);
                     }
+                    increase_last(&self.red.sniper_ticks_per_last, if find_class(&red_team,Class::Sniper) { 1 } else { 0 });
+                    increase_last(&self.red.spy_ticks_per_last, if find_class(&red_team,Class::Spy) { 1 } else { 0 });
                 }
 
                 // Calling this here means events are looped thru twice but fuck off!
@@ -219,10 +241,10 @@ impl ParsedDemo {
                         // medic died
                         println!("med {} on last died {}", get_name(med), tick);
                         if team_on_last == Team::Red {
-                            self.red_med_deaths_on_last.push(tick);
+                            self.red.med_deaths_on_last.push(tick);
                         }
                         else if team_on_last == Team::Blue {
-                            self.blue_med_deaths_on_last.push(tick);
+                            self.blue.med_deaths_on_last.push(tick);
                         } else {
                             println!("What the fuck?!");
                             assert!(false)
@@ -249,7 +271,7 @@ impl ParsedDemo {
                         if event.team == Team::Red as u8 {
                             // blue is on last now
                             if event_tick == &tick {
-                                self.blue_on_last_ticks.push(tick);
+                                self.blue.push_new_last(tick);
                                 println!("blue on last {}", tick);
                             }
                             team_on_last = Team::Blue;
@@ -258,7 +280,7 @@ impl ParsedDemo {
                         else {
                             // blue is no longer on last
                             if event_tick == &tick {
-                                self.blue_off_last_ticks.push(tick);
+                                self.blue.off_last_ticks.push(tick);
                                 println!("blue off last {}", tick);
                             }
                             team_on_last = Team::Other;
@@ -271,7 +293,7 @@ impl ParsedDemo {
                         if event.team == Team::Blue as u8 {
                             // red is on last now
                             if event_tick == &tick {
-                                self.red_on_last_ticks.push(tick);
+                                self.red.push_new_last(tick);
                                 println!("red on last {}", tick);
                             }
                             team_on_last = Team::Red;
@@ -280,7 +302,7 @@ impl ParsedDemo {
                         else {
                             // red is no longer on last
                             if event_tick == &tick {
-                                self.red_off_last_ticks.push(tick);
+                                self.red.off_last_ticks.push(tick);
                                 println!("red off last {}", tick);
                             }
                             team_on_last = Team::Other;
@@ -290,7 +312,7 @@ impl ParsedDemo {
                         if event_tick == &tick {
                             if event.team == Team::Blue as u8 {
                                 println!("blue capped red's last {}", tick);
-                                self.red_last_capped_ticks.push(tick);
+                                self.red.last_capped_ticks.push(tick);
                             } else {
                                 println!("What the fuck?!");
                                 assert!(false)
@@ -302,7 +324,7 @@ impl ParsedDemo {
                         if event_tick == &tick {
                             if event.team == Team::Red as u8 {
                                 println!("red capped blue's last {}", tick);
-                                self.blue_last_capped_ticks.push(tick);
+                                self.blue.last_capped_ticks.push(tick);
                             } else {
                                 println!("What the fuck?!");
                                 assert!(false)
@@ -366,10 +388,23 @@ pub fn parse_demo(demo: Demo) -> Result<ParsedDemo,ParseError> {
 // }
 //
 
+pub fn find_class(team: &Vec<&Player>, class: Class) -> bool {
+    let mut num_class = 0;
+    for player in team{
+        if Some(player).unwrap() == player{
+            if player.class == class {
+                num_class += 1;
+                assert!(num_class < 3);
+            }
+        }
+    }
+    num_class > 0
+}
+
 // player bounding box sizes are 48-49 hu's deep and wide (there's inconsistent information online).
 // 21 bounding boxes * 48.5 estimated bb size = 1018.5 hu's.
 const SAC_DISTANCE: f32 = 1018.5;
-pub fn find_sac_start(soldiers: Vec<&Player>, medic: &Player, soldier_team: Vec<&Player>, other_team: Vec<&Player>, tick: DemoTick, demo_status: &mut ParsedDemo) -> DemoTick {
+pub fn find_sac_start(soldiers: Vec<&Player>, medic: &Player, soldier_team: &Vec<&Player>, other_team: Vec<&Player>, tick: DemoTick, demo_status: &mut ParsedDemo) -> DemoTick {
     for soldier in soldiers{
         if Some(soldier).unwrap() == soldier{
             if !is_alive(soldier) {
@@ -409,10 +444,10 @@ pub fn find_sac_start(soldiers: Vec<&Player>, medic: &Player, soldier_team: Vec<
                 println!("soldier team size: {} other team size: {}",everyone_else.len(),other_team_alive.len());
                 demo_status.last_tick_with_sac = tick_info;
                 if soldier.team == Team::Red {
-                    demo_status.red_sac_ticks.push(tick_info);
+                    demo_status.red.sac_ticks.push(tick_info);
                 }
                 else if soldier.team == Team::Blue {
-                    demo_status.blue_sac_ticks.push(tick_info);
+                    demo_status.blue.sac_ticks.push(tick_info);
                 }
                 return tick;
             }
