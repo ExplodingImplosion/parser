@@ -111,7 +111,7 @@ impl TeamTicks {
     pub fn increase_sniper_spy_ticks(&mut self, team: &Vec<&Player>) {
         let i = self.on_last_idx;
         self.sniper_ticks_per_last[i] += if find_class(&team,Class::Sniper) { 1 } else { 0 };
-        self.spy_ticks_per_last[i] += if find_class(&team,Class::Sniper) { 1 } else { 0 };
+        self.spy_ticks_per_last[i] += if find_class(&team,Class::Spy) { 1 } else { 0 };
 
     }
 }
