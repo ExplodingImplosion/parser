@@ -81,13 +81,14 @@ struct TeamTicks {
     med_deaths_on_last: Vec<DemoTick>,
     sniper_ticks_per_last: Vec<u64>,
     spy_ticks_per_last: Vec<u64>,
+    on_last_idx: usize,
 }
 
 const lmaocapacity: usize = 30;
 
 impl TeamTicks {
     pub fn new() -> Self {
-        assert_eq!(usize::MAX.wrapping_add(1),0);
+        assert_eq!(0usize.wrapping_sub(1).wrapping_add(1),0);
         TeamTicks {
             on_last_ticks: Vec::with_capacity(lmaocapacity),
             off_last_ticks: Vec::with_capacity(lmaocapacity),
@@ -97,12 +98,11 @@ impl TeamTicks {
             med_deaths_on_last: Vec::with_capacity(lmaocapacity),
             sniper_ticks_per_last: Vec::with_capacity(lmaocapacity),
             spy_ticks_per_last: Vec::with_capacity(lmaocapacity),
-            on_last_idx: usize::MAX,
+            on_last_idx: 0usize.wrapping_sub(1),
         }
     }
 
-    pub fn push_new_last(&mut self, tick: DemoTick) {
-        self.on_last_ticks.push(tick);
+    pub fn push_sniper_spy_stuff(&mut self, tick: DemoTick) {
         self.sniper_ticks_per_last.push(0);
         self.spy_ticks_per_last.push(0);
         self.on_last_idx = self.on_last_idx.wrapping_add(1);
@@ -270,7 +270,8 @@ impl ParsedDemo {
                         if event.team == Team::Red as u8 {
                             // blue is on last now
                             if event_tick == &tick {
-                                self.blue.push_new_last(tick);
+                                self.blue.on_last_ticks.push(tick);
+                                self.red.push_sniper_spy_stuff(tick);
                                 println!("blue on last {}", tick);
                             }
                             team_on_last = Team::Blue;
@@ -292,7 +293,8 @@ impl ParsedDemo {
                         if event.team == Team::Blue as u8 {
                             // red is on last now
                             if event_tick == &tick {
-                                self.red.push_new_last(tick);
+                                self.red.on_last_ticks.push(tick);
+                                self.blue.push_sniper_spy_stuff(tick);
                                 println!("red on last {}", tick);
                             }
                             team_on_last = Team::Red;
