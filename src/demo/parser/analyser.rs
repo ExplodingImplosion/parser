@@ -519,9 +519,9 @@ impl Analyser {
                 // println!("{:?}", event);
 
                 // if the cp is blue's second
-                if (event.cp == CPID::BlueSecond as u8) {
+                if event.cp == CPID::BlueSecond as u8 {
                     // if red team capped blue second
-                    if (event.team == Team::Red as u8) {
+                    if event.team == Team::Red as u8 {
                         // blue is on last now
                         self.state.blue_on_last_ticks.push(tick);
                         // println!("blue on last {}", tick);
@@ -535,9 +535,9 @@ impl Analyser {
                 }
 
                 // if the cp is red's second
-                else if (event.cp == CPID::RedSecond as u8) {
+                else if event.cp == CPID::RedSecond as u8 {
                     // if blue team capped red second
-                    if (event.team == Team::Blue as u8) {
+                    if event.team == Team::Blue as u8 {
                         // red is on last now
                         self.state.red_on_last_ticks.push(tick);
                         // println!("red on last {}", tick);
