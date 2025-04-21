@@ -363,8 +363,10 @@ pub fn parse_demo(demo: Demo) -> Result<ParsedDemo,ParseError> {
     }
 
     let gaming = ticker.handler.get_parser_state();
-    for class in &gaming.server_classes {
-        println!("ID: {}, Name: {}",class.id,class.name);
+    let classmap  = &gaming.server_classes;
+    for (entity, class) in &gaming.entity_classes {
+        let class = &classmap[usize::from(*class)];
+        println!("ID: {}, Name: {}, Send Table Name: {}",entity,class.name,class.data_table);
     }
     parsed_demo.finish(ticker.state());
     let state = ticker.into_state();
