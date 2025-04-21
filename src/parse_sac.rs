@@ -361,9 +361,10 @@ pub fn parse_demo(demo: Demo) -> Result<ParsedDemo,ParseError> {
             // let _ =  progress.call1(&JsValue::null(), &last_progress.into());
         }
     let gaming = ticker.handler.get_parser_state();
-    for class in &gaming.server_classes {
-        println!("ID: {}, Name: {}",class.id,class.name);
-    }
+    println!("len {}",&gaming.server_classes.len());
+    // for class in &gaming.server_classes {
+    //     println!("ID: {}, Name: {}",class.id,class.name);
+    // }
     }
 
     parsed_demo.finish(ticker.state());
