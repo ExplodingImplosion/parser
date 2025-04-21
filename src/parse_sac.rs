@@ -360,13 +360,12 @@ pub fn parse_demo(demo: Demo) -> Result<ParsedDemo,ParseError> {
             last_progress = new_progress;
             // let _ =  progress.call1(&JsValue::null(), &last_progress.into());
         }
-    // let gaming = ticker.handler.get_parser_state();
-    // println!("len {}",&gaming.server_classes.len());
-    // for class in &gaming.server_classes {
-    //     println!("ID: {}, Name: {}",class.id,class.name);
-    // }
     }
 
+    let gaming = ticker.handler.get_parser_state();
+    for class in &gaming.server_classes {
+        println!("ID: {}, Name: {}",class.id,class.name);
+    }
     parsed_demo.finish(ticker.state());
     let state = ticker.into_state();
 
