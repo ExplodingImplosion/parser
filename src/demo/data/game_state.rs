@@ -71,6 +71,7 @@ pub struct Player {
     pub in_pvs: bool,
     pub bounds: Box,
     pub weapons: [Handle; 3],
+    pub flags: u16,
 }
 
 pub const PLAYER_BOX_DEFAULT: Box = Box {

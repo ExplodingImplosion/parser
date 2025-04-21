@@ -209,6 +209,9 @@ impl GameStateAnalyser {
     pub fn handle_player_entity(&mut self, entity: &PacketEntity, parser_state: &ParserState) {
         let player = self.state.get_or_create_player(entity.entity_index);
 
+        const FLAGS_PROP: SendPropIdentifier =
+            SendPropIdentifier::new("DT_BasePlayer", "m_fFlags");
+
         const HEALTH_PROP: SendPropIdentifier =
             SendPropIdentifier::new("DT_BasePlayer", "m_iHealth");
         const MAX_HEALTH_PROP: SendPropIdentifier =
@@ -287,6 +290,9 @@ impl GameStateAnalyser {
                 WEAPON_2 => {
                     let handle = Handle(i64::try_from(&prop.value).unwrap_or_default());
                     player.weapons[2] = handle;
+                }
+                FLAGS_PROP => {
+                    player.flags = i64::try_from(&prop.value).unwrap_or_default() as u16;
                 }
                 _ => {}
             }
