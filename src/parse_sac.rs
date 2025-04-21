@@ -368,7 +368,7 @@ pub fn parse_demo(demo: Demo) -> Result<ParsedDemo,ParseError> {
 
     parsed_demo.finish(ticker.state());
     let state = ticker.into_state();
-
+    // asdf
     Ok(parsed_demo)
 }
 //
