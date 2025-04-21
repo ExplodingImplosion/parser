@@ -8,6 +8,7 @@ use tf_demo_parser::demo::parser::analyser::MatchState;
 use tf_demo_parser::demo::parser::player_summary_analyzer::PlayerSummaryAnalyzer;
 pub use tf_demo_parser::{Demo, DemoParser, Parse, ParseError, ParserState, Stream};
 use tf_demo_parser::parse_sac;
+use tf_demo_parser::parse_bert_airshot;
 
 #[cfg(feature = "jemallocator")]
 #[global_allocator]
@@ -50,6 +51,7 @@ fn main() -> Result<(), MainError> {
         let gaming = parse_sac::parse_demo(demo)?;
         let parsed = JsonParsed {state: gaming};
         println!("{}", serde_json::to_string(&parsed)?);
+        let gaming2 = parse_bert_airshot::parse_demo(Demo::new(&file))?;
         // // Use the default (simple) analyzer to track kills, assists, and deaths
         // let parser = if all {
         //     DemoParser::new_all(demo.get_stream())

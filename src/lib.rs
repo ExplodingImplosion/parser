@@ -20,6 +20,7 @@ pub(crate) mod consthash;
 pub mod demo;
 pub(crate) mod nullhasher;
 pub mod parse_sac;
+pub mod parse_bert_airshot;
 
 #[cfg(test)]
 #[track_caller]
