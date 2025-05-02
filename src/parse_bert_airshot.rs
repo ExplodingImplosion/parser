@@ -83,7 +83,7 @@ impl ParsedDemo {
     pub fn finish(&mut self, state: &GameState) {
         // TODO add stuff
     }
-
+    const BertID: String = "U:1:180400618".to_string();
     pub fn push_state(&mut self, mut game_state: &GameState) {
         if let Some(world) = game_state.world.as_ref() {
             for _tick in u32::from(self.last_tick)..u32::from(game_state.tick) {
