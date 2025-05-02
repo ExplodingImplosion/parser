@@ -86,10 +86,6 @@ impl ParsedDemo {
 
     pub fn push_state(&mut self, mut game_state: &GameState) {
         if let Some(world) = game_state.world.as_ref() {
-            // Other = no team on last
-            // let mut team_on_last = Team::Other;
-            // other = no team sac
-            let mut is_sacing = Team::Other;
             for _tick in u32::from(self.last_tick)..u32::from(game_state.tick) {
                 let tick = game_state.tick;
 
@@ -97,11 +93,66 @@ impl ParsedDemo {
                 for (index, mut player) in game_state.players.iter().enumerate() {
                     if let (None, Some(info)) = (self.player_info.get(index), player.info.as_ref())
                     {
+                        println!("{} {} {}",game_state.tick,info.steam_id,info.name);
                         self.player_info.push(info.clone());
                     }
                 }
 
                 self.last_tick = tick;
+            }
+
+            for collision in &game_state.collisions {
+                if collision.tick != game_state.tick {
+                    continue
+                }
+                let bruh = game_state.get_player(collision.target).unwrap();
+                if let Some(player) = game_state
+                    .get_player(collision.target)
+                    .and_then(|player| player.info.as_ref())
+                {
+                    let weapon_class = game_state
+                        .server_classes
+                        .get(usize::from(collision.projectile.class))
+                        .map(|class| class.name.as_str())
+                        .unwrap_or("unknown weapon");
+
+                    let shooter = game_state
+                        .players
+                        .iter()
+                        .find(|player| {
+                            player
+                                .weapons
+                                .iter()
+                                .any(|weapon| collision.projectile.launcher == *weapon)
+                        });
+                    let shooter_info = shooter.and_then(|player| player.info.as_ref());
+                    let airshot = bruh.is_in_air();
+
+                    if let Some(shooter_info) = shooter_info {
+                        let from_midair = shooter.unwrap().is_in_air();
+                        println!("{} | {} hit a{} on {} while {}",
+                                 game_state.tick,
+                                 shooter_info.name,
+                                 if airshot {"n airshot"} else {" direct"},
+                                 player.name,
+                                 if from_midair {"midair"} else {"grounded"},
+                        );
+                        // println!(
+                        //     "{}: {} hit by {} from {}, in air: {}, all flags: {}",
+                        //     collision.tick, player.name, weapon_class, shooter_info.name, midair, flags
+                        // );
+                    } else {
+                        println!("{} | an unknown player hit a{} on {}",
+                                 game_state.tick,
+                                 if airshot {"n airshot"} else {" direct"},
+                                 player.name,
+                        );
+                        // println!(
+                        //     "{}: {} hit by {} from unknown player {}",
+                        //     collision.tick, player.name, weapon_class, collision.projectile.launcher
+                        // );
+                    }
+                }
             }
         }
     }
@@ -126,10 +177,10 @@ pub fn parse_demo(demo: Demo) -> Result<ParsedDemo,ParseError> {
     }
 
     parsed_demo.finish(ticker.state());
-    let state = ticker.into_state();
-    for player in state.players {
-        println!("{}",player.flags);
-    }
+    // let state = ticker.into_state();
+    // for player in state.players {
+    //     println!("{}",player.flags);
+    // }
     Ok(parsed_demo)
 }
 

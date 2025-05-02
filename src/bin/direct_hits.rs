@@ -7,6 +7,7 @@ use tf_demo_parser::demo::header::Header;
 use tf_demo_parser::demo::parser::analyser::MatchState;
 use tf_demo_parser::demo::parser::gamestateanalyser::GameStateAnalyser;
 pub use tf_demo_parser::{Demo, DemoParser, Parse};
+use tf_demo_parser::demo::data::game_state::Player;
 
 #[cfg(feature = "jemallocator")]
 #[global_allocator]
@@ -40,6 +41,7 @@ fn main() -> Result<(), MainError> {
     let (_header, state) = parser.parse()?;
 
     for collision in &state.collisions {
+        let bruh = state.get_player(collision.target).unwrap();
         if let Some(player) = state
             .get_player(collision.target)
             .and_then(|player| player.info.as_ref())
@@ -58,13 +60,19 @@ fn main() -> Result<(), MainError> {
                         .weapons
                         .iter()
                         .any(|weapon| collision.projectile.launcher == *weapon)
-                })
-                .and_then(|player| player.info.as_ref());
-
+                });
+            let shooter_info = shooter.and_then(|player| player.info.as_ref());
+            let mut midair = false;
+            let mut flags: u16 = 0;
             if let Some(shooter) = shooter {
+                midair = bruh.is_in_air();
+                flags = bruh.flags;
+            }
+
+            if let Some(shooter_info) = shooter_info {
                 println!(
-                    "{}: {} hit by {} from {}",
-                    collision.tick, player.name, weapon_class, shooter.name
+                    "{}: {} hit by {} from {}, in air: {}, all flags: {}",
+                    collision.tick, player.name, weapon_class, shooter_info.name, midair, flags
                 );
             } else {
                 println!(

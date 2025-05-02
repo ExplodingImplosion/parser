@@ -88,12 +88,17 @@ pub const PLAYER_BOX_DEFAULT: Box = Box {
 };
 
 impl Player {
+    pub const FL_ONGROUND: u16 = 1;
     pub fn new(entity: EntityId) -> Player {
         Player {
             entity,
             bounds: PLAYER_BOX_DEFAULT,
             ..Player::default()
         }
+    }
+
+    pub fn is_in_air(&self) -> bool {
+        self.flags & Player::FL_ONGROUND == 0
     }
 
     pub fn collides(&self, projectile: &Projectile, time_per_tick: f32) -> bool {

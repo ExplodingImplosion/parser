@@ -1,719 +1,82 @@
-blue on last 26311
---------
-0 0
-5 27589
---------
-matt_rolltide is sacing the kitchen mid (bacon egg and  on tick 27589
-soldier team size: 5 other team size: 5
---------
-5 27721
-5 29337
---------
-matt_rolltide is sacing the kitchen mid (bacon egg and  on tick 29337
-soldier team size: 4 other team size: 5
-med the kitchen mid (bacon egg and  on last died 31282
-blue off last 39344
-blue on last 43225
-med the kitchen mid (bacon egg and  on last died 43851
-red capped blue's last 44416
-blue on last 49730
---------
-5 29428
-5 50554
---------
-matt_rolltide is sacing the kitchen mid (bacon egg and  on tick 50554
-soldier team size: 5 other team size: 5
-blue off last 53862
-blue on last 60430
---------
-5 50628
-5 61977
---------
-matt_rolltide is sacing the kitchen mid (bacon egg and  on tick 61977
-soldier team size: 5 other team size: 5
---------
-5 62014
-5 65345
---------
-matt_rolltide is sacing the kitchen mid (bacon egg and  on tick 65345
-soldier team size: 4 other team size: 5
-blue off last 66039
-red on last 78130
---------
-5 65395
-10 81389
---------
-Bert. is sacing phasod on tick 81389
-soldier team size: 4 other team size: 6
-med phasod on last died 81404
-blue capped red's last 81783
-red on last 86933
---------
-10 81403
-10 90577
---------
-Bert. is sacing phasod on tick 90577
-soldier team size: 4 other team size: 6
-red off last 99306
-blue on last 107622
-blue off last 111082
-red on last 121234
---------
-10 90654
-10 123594
---------
-Bert. is sacing phasod on tick 123594
-soldier team size: 4 other team size: 5
-med phasod on last died 123867
-blue capped red's last 125442
-blue on last 131217
-red capped blue's last 132798
-red on last 138059
-med phasod on last died 140281
-blue capped red's last 140591
-ID: 0, Name: CWorld, Send Table Name: DT_WORLD
-ID: 1, Name: CTFPlayer, Send Table Name: DT_TFPlayer
-ID: 2, Name: CTFPlayer, Send Table Name: DT_TFPlayer
-ID: 3, Name: CTFPlayer, Send Table Name: DT_TFPlayer
-ID: 4, Name: CTFPlayer, Send Table Name: DT_TFPlayer
-ID: 5, Name: CTFPlayer, Send Table Name: DT_TFPlayer
-ID: 6, Name: CTFPlayer, Send Table Name: DT_TFPlayer
-ID: 7, Name: CTFPlayer, Send Table Name: DT_TFPlayer
-ID: 8, Name: CTFPlayer, Send Table Name: DT_TFPlayer
-ID: 9, Name: CTFPlayer, Send Table Name: DT_TFPlayer
-ID: 10, Name: CTFPlayer, Send Table Name: DT_TFPlayer
-ID: 11, Name: CTFPlayer, Send Table Name: DT_TFPlayer
-ID: 12, Name: CTFPlayer, Send Table Name: DT_TFPlayer
-ID: 13, Name: CTFPlayer, Send Table Name: DT_TFPlayer
-ID: 14, Name: CTFPlayer, Send Table Name: DT_TFPlayer
-ID: 15, Name: CTFPlayer, Send Table Name: DT_TFPlayer
-ID: 26, Name: CTFTeam, Send Table Name: DT_TFTeam
-ID: 27, Name: CTFTeam, Send Table Name: DT_TFTeam
-ID: 28, Name: CTFTeam, Send Table Name: DT_TFTeam
-ID: 29, Name: CTFTeam, Send Table Name: DT_TFTeam
-ID: 31, Name: CTFPlayerResource, Send Table Name: DT_TFPlayerResource
-ID: 32, Name: CTFObjectiveResource, Send Table Name: DT_TFObjectiveResource
-ID: 33, Name: CMonsterResource, Send Table Name: DT_MonsterResource
-ID: 34, Name: CMannVsMachineStats, Send Table Name: DT_MannVsMachineStats
-ID: 35, Name: CBaseAnimating, Send Table Name: DT_BaseAnimating
-ID: 36, Name: CVoteController, Send Table Name: DT_VoteController
-ID: 37, Name: CVoteController, Send Table Name: DT_VoteController
-ID: 38, Name: CVoteController, Send Table Name: DT_VoteController
-ID: 40, Name: CBaseEntity, Send Table Name: DT_BaseEntity
-ID: 41, Name: CBaseEntity, Send Table Name: DT_BaseEntity
-ID: 42, Name: CTFGrenadePipebombProjectile, Send Table Name: DT_TFProjectile_Pipebomb
-ID: 43, Name: CDynamicProp, Send Table Name: DT_DynamicProp
-ID: 44, Name: CDynamicProp, Send Table Name: DT_DynamicProp
-ID: 45, Name: CFunc_Dust, Send Table Name: DT_Func_Dust
-ID: 46, Name: CBaseEntity, Send Table Name: DT_BaseEntity
-ID: 47, Name: CBaseAnimating, Send Table Name: DT_BaseAnimating
-ID: 48, Name: CBaseAnimating, Send Table Name: DT_BaseAnimating
-ID: 49, Name: CBaseAnimating, Send Table Name: DT_BaseAnimating
-ID: 50, Name: CBaseAnimating, Send Table Name: DT_BaseAnimating
-ID: 52, Name: CBaseAnimating, Send Table Name: DT_BaseAnimating
-ID: 53, Name: CTFViewModel, Send Table Name: DT_TFViewModel
-ID: 54, Name: CTFDroppedWeapon, Send Table Name: DT_TFDroppedWeapon
-ID: 55, Name: CSprite, Send Table Name: DT_Sprite
-ID: 56, Name: CSprite, Send Table Name: DT_Sprite
-ID: 57, Name: CFuncRespawnRoomVisualizer, Send Table Name: DT_FuncRespawnRoomVisualizer
-ID: 58, Name: CFuncRespawnRoomVisualizer, Send Table Name: DT_FuncRespawnRoomVisualizer
-ID: 59, Name: CFuncRespawnRoomVisualizer, Send Table Name: DT_FuncRespawnRoomVisualizer
-ID: 60, Name: CFuncRespawnRoomVisualizer, Send Table Name: DT_FuncRespawnRoomVisualizer
-ID: 61, Name: CLightGlow, Send Table Name: DT_LightGlow
-ID: 62, Name: CLightGlow, Send Table Name: DT_LightGlow
-ID: 63, Name: CLightGlow, Send Table Name: DT_LightGlow
-ID: 64, Name: CLightGlow, Send Table Name: DT_LightGlow
-ID: 65, Name: CBaseEntity, Send Table Name: DT_BaseEntity
-ID: 66, Name: CBaseEntity, Send Table Name: DT_BaseEntity
-ID: 67, Name: CBaseEntity, Send Table Name: DT_BaseEntity
-ID: 68, Name: CBaseEntity, Send Table Name: DT_BaseEntity
-ID: 69, Name: CBaseEntity, Send Table Name: DT_BaseEntity
-ID: 70, Name: CBaseEntity, Send Table Name: DT_BaseEntity
-ID: 71, Name: CBaseEntity, Send Table Name: DT_BaseEntity
-ID: 72, Name: CBaseEntity, Send Table Name: DT_BaseEntity
-ID: 73, Name: CBaseEntity, Send Table Name: DT_BaseEntity
-ID: 74, Name: CBaseEntity, Send Table Name: DT_BaseEntity
-ID: 75, Name: CBaseEntity, Send Table Name: DT_BaseEntity
-ID: 76, Name: CBaseEntity, Send Table Name: DT_BaseEntity
-ID: 77, Name: CBaseEntity, Send Table Name: DT_BaseEntity
-ID: 78, Name: CBaseEntity, Send Table Name: DT_BaseEntity
-ID: 79, Name: CBaseEntity, Send Table Name: DT_BaseEntity
-ID: 80, Name: CBaseEntity, Send Table Name: DT_BaseEntity
-ID: 81, Name: CBaseEntity, Send Table Name: DT_BaseEntity
-ID: 82, Name: CBaseEntity, Send Table Name: DT_BaseEntity
-ID: 83, Name: CBaseEntity, Send Table Name: DT_BaseEntity
-ID: 84, Name: CBaseEntity, Send Table Name: DT_BaseEntity
-ID: 85, Name: CBaseEntity, Send Table Name: DT_BaseEntity
-ID: 86, Name: CBaseEntity, Send Table Name: DT_BaseEntity
-ID: 87, Name: CBaseEntity, Send Table Name: DT_BaseEntity
-ID: 88, Name: CBaseEntity, Send Table Name: DT_BaseEntity
-ID: 89, Name: CBaseEntity, Send Table Name: DT_BaseEntity
-ID: 90, Name: CBaseEntity, Send Table Name: DT_BaseEntity
-ID: 91, Name: CBaseEntity, Send Table Name: DT_BaseEntity
-ID: 92, Name: CDynamicProp, Send Table Name: DT_DynamicProp
-ID: 93, Name: CDynamicProp, Send Table Name: DT_DynamicProp
-ID: 94, Name: CBaseEntity, Send Table Name: DT_BaseEntity
-ID: 95, Name: CBaseEntity, Send Table Name: DT_BaseEntity
-ID: 96, Name: CBaseEntity, Send Table Name: DT_BaseEntity
-ID: 97, Name: CBaseEntity, Send Table Name: DT_BaseEntity
-ID: 98, Name: CBaseEntity, Send Table Name: DT_BaseEntity
-ID: 99, Name: CBaseEntity, Send Table Name: DT_BaseEntity
-ID: 100, Name: CBaseEntity, Send Table Name: DT_BaseEntity
-ID: 101, Name: CBaseEntity, Send Table Name: DT_BaseEntity
-ID: 102, Name: CBaseEntity, Send Table Name: DT_BaseEntity
-ID: 103, Name: CLightGlow, Send Table Name: DT_LightGlow
-ID: 105, Name: CLightGlow, Send Table Name: DT_LightGlow
-ID: 107, Name: CLightGlow, Send Table Name: DT_LightGlow
-ID: 109, Name: CLightGlow, Send Table Name: DT_LightGlow
-ID: 110, Name: CBaseEntity, Send Table Name: DT_BaseEntity
-ID: 111, Name: CBaseEntity, Send Table Name: DT_BaseEntity
-ID: 112, Name: CBaseEntity, Send Table Name: DT_BaseEntity
-ID: 113, Name: CBaseEntity, Send Table Name: DT_BaseEntity
-ID: 114, Name: CBaseEntity, Send Table Name: DT_BaseEntity
-ID: 115, Name: CBaseEntity, Send Table Name: DT_BaseEntity
-ID: 116, Name: CBaseEntity, Send Table Name: DT_BaseEntity
-ID: 117, Name: CBaseEntity, Send Table Name: DT_BaseEntity
-ID: 118, Name: CBaseEntity, Send Table Name: DT_BaseEntity
-ID: 119, Name: CBaseEntity, Send Table Name: DT_BaseEntity
-ID: 120, Name: CBaseEntity, Send Table Name: DT_BaseEntity
-ID: 121, Name: CBaseEntity, Send Table Name: DT_BaseEntity
-ID: 122, Name: CBaseEntity, Send Table Name: DT_BaseEntity
-ID: 123, Name: CBaseEntity, Send Table Name: DT_BaseEntity
-ID: 124, Name: CBaseEntity, Send Table Name: DT_BaseEntity
-ID: 125, Name: CBaseEntity, Send Table Name: DT_BaseEntity
-ID: 126, Name: CBaseEntity, Send Table Name: DT_BaseEntity
-ID: 127, Name: CBaseEntity, Send Table Name: DT_BaseEntity
-ID: 128, Name: CBaseEntity, Send Table Name: DT_BaseEntity
-ID: 129, Name: CBaseEntity, Send Table Name: DT_BaseEntity
-ID: 130, Name: CBaseEntity, Send Table Name: DT_BaseEntity
-ID: 131, Name: CBaseEntity, Send Table Name: DT_BaseEntity
-ID: 132, Name: CBaseEntity, Send Table Name: DT_BaseEntity
-ID: 133, Name: CBaseEntity, Send Table Name: DT_BaseEntity
-ID: 134, Name: CBaseEntity, Send Table Name: DT_BaseEntity
-ID: 135, Name: CBaseEntity, Send Table Name: DT_BaseEntity
-ID: 136, Name: CBaseEntity, Send Table Name: DT_BaseEntity
-ID: 137, Name: CBaseEntity, Send Table Name: DT_BaseEntity
-ID: 138, Name: CBaseEntity, Send Table Name: DT_BaseEntity
-ID: 139, Name: CBaseEntity, Send Table Name: DT_BaseEntity
-ID: 140, Name: CBaseEntity, Send Table Name: DT_BaseEntity
-ID: 141, Name: CBaseEntity, Send Table Name: DT_BaseEntity
-ID: 142, Name: CBaseEntity, Send Table Name: DT_BaseEntity
-ID: 143, Name: CBaseEntity, Send Table Name: DT_BaseEntity
-ID: 144, Name: CBaseEntity, Send Table Name: DT_BaseEntity
-ID: 145, Name: CBaseEntity, Send Table Name: DT_BaseEntity
-ID: 147, Name: CBaseDoor, Send Table Name: DT_BaseDoor
-ID: 150, Name: CBaseDoor, Send Table Name: DT_BaseDoor
-ID: 154, Name: CBaseDoor, Send Table Name: DT_BaseDoor
-ID: 156, Name: CBaseDoor, Send Table Name: DT_BaseDoor
-ID: 162, Name: CBaseDoor, Send Table Name: DT_BaseDoor
-ID: 163, Name: CBaseDoor, Send Table Name: DT_BaseDoor
-ID: 165, Name: CBaseDoor, Send Table Name: DT_BaseDoor
-ID: 166, Name: CBaseDoor, Send Table Name: DT_BaseDoor
-ID: 168, Name: CBaseEntity, Send Table Name: DT_BaseEntity
-ID: 169, Name: CBaseAnimating, Send Table Name: DT_BaseAnimating
-ID: 170, Name: CBaseEntity, Send Table Name: DT_BaseEntity
-ID: 171, Name: CBaseEntity, Send Table Name: DT_BaseEntity
-ID: 172, Name: CBaseEntity, Send Table Name: DT_BaseEntity
-ID: 173, Name: CBaseEntity, Send Table Name: DT_BaseEntity
-ID: 174, Name: CBaseEntity, Send Table Name: DT_BaseEntity
-ID: 175, Name: CBaseEntity, Send Table Name: DT_BaseEntity
-ID: 176, Name: CBaseEntity, Send Table Name: DT_BaseEntity
-ID: 177, Name: CBaseEntity, Send Table Name: DT_BaseEntity
-ID: 178, Name: CBaseEntity, Send Table Name: DT_BaseEntity
-ID: 179, Name: CBaseEntity, Send Table Name: DT_BaseEntity
-ID: 180, Name: CBaseEntity, Send Table Name: DT_BaseEntity
-ID: 181, Name: CBaseEntity, Send Table Name: DT_BaseEntity
-ID: 182, Name: CBaseEntity, Send Table Name: DT_BaseEntity
-ID: 183, Name: CBaseEntity, Send Table Name: DT_BaseEntity
-ID: 184, Name: CBaseEntity, Send Table Name: DT_BaseEntity
-ID: 185, Name: CShadowControl, Send Table Name: DT_ShadowControl
-ID: 186, Name: CFogController, Send Table Name: DT_FogController
-ID: 187, Name: CEnvTonemapController, Send Table Name: DT_EnvTonemapController
-ID: 188, Name: CTFRocketLauncher, Send Table Name: DT_WeaponRocketLauncher
-ID: 189, Name: CBaseEntity, Send Table Name: DT_BaseEntity
-ID: 190, Name: CBaseEntity, Send Table Name: DT_BaseEntity
-ID: 191, Name: CBaseEntity, Send Table Name: DT_BaseEntity
-ID: 192, Name: CBaseEntity, Send Table Name: DT_BaseEntity
-ID: 193, Name: CBaseEntity, Send Table Name: DT_BaseEntity
-ID: 194, Name: CBaseEntity, Send Table Name: DT_BaseEntity
-ID: 195, Name: CBaseEntity, Send Table Name: DT_BaseEntity
-ID: 196, Name: CBaseEntity, Send Table Name: DT_BaseEntity
-ID: 197, Name: CBaseEntity, Send Table Name: DT_BaseEntity
-ID: 198, Name: CBaseEntity, Send Table Name: DT_BaseEntity
-ID: 199, Name: CBaseEntity, Send Table Name: DT_BaseEntity
-ID: 200, Name: CBaseEntity, Send Table Name: DT_BaseEntity
-ID: 201, Name: CBaseEntity, Send Table Name: DT_BaseEntity
-ID: 202, Name: CBaseEntity, Send Table Name: DT_BaseEntity
-ID: 203, Name: CBaseEntity, Send Table Name: DT_BaseEntity
-ID: 204, Name: CBaseEntity, Send Table Name: DT_BaseEntity
-ID: 205, Name: CBaseEntity, Send Table Name: DT_BaseEntity
-ID: 206, Name: CBaseEntity, Send Table Name: DT_BaseEntity
-ID: 207, Name: CParticleSystem, Send Table Name: DT_ParticleSystem
-ID: 208, Name: CParticleSystem, Send Table Name: DT_ParticleSystem
-ID: 211, Name: CBaseAnimating, Send Table Name: DT_BaseAnimating
-ID: 212, Name: CBaseAnimating, Send Table Name: DT_BaseAnimating
-ID: 213, Name: CBaseAnimating, Send Table Name: DT_BaseAnimating
-ID: 214, Name: CBaseDoor, Send Table Name: DT_BaseDoor
-ID: 217, Name: CBaseDoor, Send Table Name: DT_BaseDoor
-ID: 219, Name: CBaseDoor, Send Table Name: DT_BaseDoor
-ID: 220, Name: CFuncRespawnRoomVisualizer, Send Table Name: DT_FuncRespawnRoomVisualizer
-ID: 224, Name: CBaseEntity, Send Table Name: DT_BaseEntity
-ID: 225, Name: CBaseAnimating, Send Table Name: DT_BaseAnimating
-ID: 226, Name: CFuncRespawnRoomVisualizer, Send Table Name: DT_FuncRespawnRoomVisualizer
-ID: 227, Name: CFuncRespawnRoomVisualizer, Send Table Name: DT_FuncRespawnRoomVisualizer
-ID: 228, Name: CFuncRespawnRoomVisualizer, Send Table Name: DT_FuncRespawnRoomVisualizer
-ID: 229, Name: CBaseAnimating, Send Table Name: DT_BaseAnimating
-ID: 230, Name: CBaseAnimating, Send Table Name: DT_BaseAnimating
-ID: 232, Name: CBaseDoor, Send Table Name: DT_BaseDoor
-ID: 235, Name: CBaseDoor, Send Table Name: DT_BaseDoor
-ID: 238, Name: CTFViewModel, Send Table Name: DT_TFViewModel
-ID: 240, Name: CBaseAnimating, Send Table Name: DT_BaseAnimating
-ID: 241, Name: CBaseAnimating, Send Table Name: DT_BaseAnimating
-ID: 242, Name: CBaseAnimating, Send Table Name: DT_BaseAnimating
-ID: 243, Name: CTFGrenadePipebombProjectile, Send Table Name: DT_TFProjectile_Pipebomb
-ID: 244, Name: CBaseAnimating, Send Table Name: DT_BaseAnimating
-ID: 245, Name: CBaseAnimating, Send Table Name: DT_BaseAnimating
-ID: 246, Name: CBaseAnimating, Send Table Name: DT_BaseAnimating
-ID: 247, Name: CBaseAnimating, Send Table Name: DT_BaseAnimating
-ID: 248, Name: CBaseAnimating, Send Table Name: DT_BaseAnimating
-ID: 249, Name: CBaseAnimating, Send Table Name: DT_BaseAnimating
-ID: 250, Name: CBaseAnimating, Send Table Name: DT_BaseAnimating
-ID: 251, Name: CBaseAnimating, Send Table Name: DT_BaseAnimating
-ID: 252, Name: CBaseDoor, Send Table Name: DT_BaseDoor
-ID: 254, Name: CBaseDoor, Send Table Name: DT_BaseDoor
-ID: 257, Name: CDynamicProp, Send Table Name: DT_DynamicProp
-ID: 258, Name: CDynamicProp, Send Table Name: DT_DynamicProp
-ID: 267, Name: CSprite, Send Table Name: DT_Sprite
-ID: 268, Name: CSprite, Send Table Name: DT_Sprite
-ID: 269, Name: CSprite, Send Table Name: DT_Sprite
-ID: 270, Name: CSprite, Send Table Name: DT_Sprite
-ID: 271, Name: CSprite, Send Table Name: DT_Sprite
-ID: 272, Name: CSprite, Send Table Name: DT_Sprite
-ID: 279, Name: CBaseEntity, Send Table Name: DT_BaseEntity
-ID: 280, Name: CBaseEntity, Send Table Name: DT_BaseEntity
-ID: 281, Name: CBaseEntity, Send Table Name: DT_BaseEntity
-ID: 282, Name: CBaseEntity, Send Table Name: DT_BaseEntity
-ID: 283, Name: CBaseEntity, Send Table Name: DT_BaseEntity
-ID: 284, Name: CBaseEntity, Send Table Name: DT_BaseEntity
-ID: 303, Name: CDynamicProp, Send Table Name: DT_DynamicProp
-ID: 305, Name: CBaseEntity, Send Table Name: DT_BaseEntity
-ID: 306, Name: CDynamicProp, Send Table Name: DT_DynamicProp
-ID: 307, Name: CDynamicProp, Send Table Name: DT_DynamicProp
-ID: 308, Name: CBaseEntity, Send Table Name: DT_BaseEntity
-ID: 309, Name: CBaseAnimating, Send Table Name: DT_BaseAnimating
-ID: 310, Name: CDynamicProp, Send Table Name: DT_DynamicProp
-ID: 311, Name: CBaseEntity, Send Table Name: DT_BaseEntity
-ID: 312, Name: CBaseAnimating, Send Table Name: DT_BaseAnimating
-ID: 313, Name: CBaseAnimating, Send Table Name: DT_BaseAnimating
-ID: 314, Name: CParticleSystem, Send Table Name: DT_ParticleSystem
-ID: 315, Name: CPhysicsPropMultiplayer, Send Table Name: DT_PhysicsPropMultiplayer
-ID: 316, Name: CPhysicsPropMultiplayer, Send Table Name: DT_PhysicsPropMultiplayer
-ID: 317, Name: CBaseEntity, Send Table Name: DT_BaseEntity
-ID: 318, Name: CBaseEntity, Send Table Name: DT_BaseEntity
-ID: 319, Name: CBaseAnimating, Send Table Name: DT_BaseAnimating
-ID: 320, Name: CDynamicProp, Send Table Name: DT_DynamicProp
-ID: 322, Name: CBaseAnimating, Send Table Name: DT_BaseAnimating
-ID: 323, Name: CDynamicProp, Send Table Name: DT_DynamicProp
-ID: 325, Name: CBaseEntity, Send Table Name: DT_BaseEntity
-ID: 327, Name: CBaseAnimating, Send Table Name: DT_BaseAnimating
-ID: 328, Name: CDynamicProp, Send Table Name: DT_DynamicProp
-ID: 329, Name: CBaseAnimating, Send Table Name: DT_BaseAnimating
-ID: 331, Name: CTFViewModel, Send Table Name: DT_TFViewModel
-ID: 332, Name: CTeamRoundTimer, Send Table Name: DT_TeamRoundTimer
-ID: 334, Name: CTFGameRulesProxy, Send Table Name: DT_TFGameRulesProxy
-ID: 335, Name: CBaseEntity, Send Table Name: DT_BaseEntity
-ID: 336, Name: CDynamicProp, Send Table Name: DT_DynamicProp
-ID: 337, Name: CBaseAnimating, Send Table Name: DT_BaseAnimating
-ID: 341, Name: CBaseDoor, Send Table Name: DT_BaseDoor
-ID: 342, Name: CBaseDoor, Send Table Name: DT_BaseDoor
-ID: 343, Name: CBaseAnimating, Send Table Name: DT_BaseAnimating
-ID: 344, Name: CDynamicProp, Send Table Name: DT_DynamicProp
-ID: 345, Name: CBaseAnimating, Send Table Name: DT_BaseAnimating
-ID: 346, Name: CBaseEntity, Send Table Name: DT_BaseEntity
-ID: 347, Name: CBaseEntity, Send Table Name: DT_BaseEntity
-ID: 348, Name: CBaseEntity, Send Table Name: DT_BaseEntity
-ID: 349, Name: CBaseEntity, Send Table Name: DT_BaseEntity
-ID: 350, Name: CBaseEntity, Send Table Name: DT_BaseEntity
-ID: 351, Name: CBaseEntity, Send Table Name: DT_BaseEntity
-ID: 352, Name: CBaseEntity, Send Table Name: DT_BaseEntity
-ID: 355, Name: CTFViewModel, Send Table Name: DT_TFViewModel
-ID: 356, Name: CBaseAnimating, Send Table Name: DT_BaseAnimating
-ID: 357, Name: CTFViewModel, Send Table Name: DT_TFViewModel
-ID: 358, Name: CTFViewModel, Send Table Name: DT_TFViewModel
-ID: 359, Name: CTFViewModel, Send Table Name: DT_TFViewModel
-ID: 360, Name: CTFViewModel, Send Table Name: DT_TFViewModel
-ID: 361, Name: CTFViewModel, Send Table Name: DT_TFViewModel
-ID: 362, Name: CBaseAnimating, Send Table Name: DT_BaseAnimating
-ID: 363, Name: CTFViewModel, Send Table Name: DT_TFViewModel
-ID: 365, Name: CTFViewModel, Send Table Name: DT_TFViewModel
-ID: 367, Name: CTFWearable, Send Table Name: DT_TFWearable
-ID: 368, Name: CTFViewModel, Send Table Name: DT_TFViewModel
-ID: 370, Name: CTFRocketLauncher, Send Table Name: DT_WeaponRocketLauncher
-ID: 371, Name: CBaseAnimating, Send Table Name: DT_BaseAnimating
-ID: 372, Name: CTFCrossbow, Send Table Name: DT_Crossbow
-ID: 373, Name: CBaseAnimating, Send Table Name: DT_BaseAnimating
-ID: 374, Name: CBaseAnimating, Send Table Name: DT_BaseAnimating
-ID: 375, Name: CBaseDoor, Send Table Name: DT_BaseDoor
-ID: 376, Name: CBaseAnimating, Send Table Name: DT_BaseAnimating
-ID: 377, Name: CSceneEntity, Send Table Name: DT_SceneEntity
-ID: 378, Name: CTFScatterGun, Send Table Name: DT_TFScatterGun
-ID: 379, Name: CBaseAnimating, Send Table Name: DT_BaseAnimating
-ID: 380, Name: CTFPistol_Scout, Send Table Name: DT_WeaponPistol_Scout
-ID: 381, Name: CTFBat, Send Table Name: DT_TFWeaponBat
-ID: 382, Name: CTFWearable, Send Table Name: DT_TFWearable
-ID: 383, Name: CTFViewModel, Send Table Name: DT_TFViewModel
-ID: 384, Name: CTFViewModel, Send Table Name: DT_TFViewModel
-ID: 385, Name: CWeaponMedigun, Send Table Name: DT_WeaponMedigun
-ID: 386, Name: CTFWearable, Send Table Name: DT_TFWearable
-ID: 387, Name: CTFWearable, Send Table Name: DT_TFWearable
-ID: 388, Name: CTFShovel, Send Table Name: DT_TFWeaponShovel
-ID: 389, Name: CTFScatterGun, Send Table Name: DT_TFScatterGun
-ID: 390, Name: CSceneEntity, Send Table Name: DT_SceneEntity
-ID: 391, Name: CTFViewModel, Send Table Name: DT_TFViewModel
-ID: 392, Name: CTFViewModel, Send Table Name: DT_TFViewModel
-ID: 393, Name: CTFBat, Send Table Name: DT_TFWeaponBat
-ID: 394, Name: CTFWearable, Send Table Name: DT_TFWearable
-ID: 395, Name: CTFWearable, Send Table Name: DT_TFWearable
-ID: 396, Name: CSceneEntity, Send Table Name: DT_SceneEntity
-ID: 397, Name: CTFWearable, Send Table Name: DT_TFWearable
-ID: 398, Name: CTFWearable, Send Table Name: DT_TFWearable
-ID: 399, Name: CTFGrenadeLauncher, Send Table Name: DT_WeaponGrenadeLauncher
-ID: 400, Name: CTFPipebombLauncher, Send Table Name: DT_WeaponPipebombLauncher
-ID: 401, Name: CWeaponMedigun, Send Table Name: DT_WeaponMedigun
-ID: 402, Name: CTFViewModel, Send Table Name: DT_TFViewModel
-ID: 403, Name: CTFBottle, Send Table Name: DT_TFWeaponBottle
-ID: 404, Name: CSceneEntity, Send Table Name: DT_SceneEntity
-ID: 405, Name: CTFGrenadePipebombProjectile, Send Table Name: DT_TFProjectile_Pipebomb
-ID: 406, Name: CTFPistol_Scout, Send Table Name: DT_WeaponPistol_Scout
-ID: 407, Name: CSceneEntity, Send Table Name: DT_SceneEntity
-ID: 408, Name: CTFGrenadePipebombProjectile, Send Table Name: DT_TFProjectile_Pipebomb
-ID: 409, Name: CSceneEntity, Send Table Name: DT_SceneEntity
-ID: 410, Name: CSceneEntity, Send Table Name: DT_SceneEntity
-ID: 411, Name: CTFViewModel, Send Table Name: DT_TFViewModel
-ID: 412, Name: CTFCrossbow, Send Table Name: DT_Crossbow
-ID: 413, Name: CTFDroppedWeapon, Send Table Name: DT_TFDroppedWeapon
-ID: 414, Name: CSceneEntity, Send Table Name: DT_SceneEntity
-ID: 415, Name: CTFBonesaw, Send Table Name: DT_TFWeaponBonesaw
-ID: 416, Name: CTFDroppedWeapon, Send Table Name: DT_TFDroppedWeapon
-ID: 417, Name: CTFDroppedWeapon, Send Table Name: DT_TFDroppedWeapon
-ID: 418, Name: CTFWearable, Send Table Name: DT_TFWearable
-ID: 420, Name: CTFWearable, Send Table Name: DT_TFWearable
-ID: 425, Name: CSceneEntity, Send Table Name: DT_SceneEntity
-ID: 426, Name: CTFRagdoll, Send Table Name: DT_TFRagdoll
-ID: 427, Name: CTFDroppedWeapon, Send Table Name: DT_TFDroppedWeapon
-ID: 428, Name: CTFWearable, Send Table Name: DT_TFWearable
-ID: 429, Name: CTFViewModel, Send Table Name: DT_TFViewModel
-ID: 430, Name: CLightGlow, Send Table Name: DT_LightGlow
-ID: 431, Name: CTFViewModel, Send Table Name: DT_TFViewModel
-ID: 432, Name: CTFDroppedWeapon, Send Table Name: DT_TFDroppedWeapon
-ID: 433, Name: CTFAmmoPack, Send Table Name: DT_AmmoPack
-ID: 434, Name: CTFWearable, Send Table Name: DT_TFWearable
-ID: 435, Name: CLightGlow, Send Table Name: DT_LightGlow
-ID: 436, Name: CTFDroppedWeapon, Send Table Name: DT_TFDroppedWeapon
-ID: 437, Name: CTFRagdoll, Send Table Name: DT_TFRagdoll
-ID: 438, Name: CTFWearable, Send Table Name: DT_TFWearable
-ID: 439, Name: CTFBonesaw, Send Table Name: DT_TFWeaponBonesaw
-ID: 440, Name: CTFProjectile_Rocket, Send Table Name: DT_TFProjectile_Rocket
-ID: 441, Name: CTFAmmoPack, Send Table Name: DT_AmmoPack
-ID: 442, Name: CTFViewModel, Send Table Name: DT_TFViewModel
-ID: 444, Name: CTFWearable, Send Table Name: DT_TFWearable
-ID: 445, Name: CTFDroppedWeapon, Send Table Name: DT_TFDroppedWeapon
-ID: 446, Name: CTFScatterGun, Send Table Name: DT_TFScatterGun
-ID: 447, Name: CTFPistol_Scout, Send Table Name: DT_WeaponPistol_Scout
-ID: 448, Name: CSceneEntity, Send Table Name: DT_SceneEntity
-ID: 449, Name: CTFRagdoll, Send Table Name: DT_TFRagdoll
-ID: 451, Name: CTFRagdoll, Send Table Name: DT_TFRagdoll
-ID: 452, Name: CTFRagdoll, Send Table Name: DT_TFRagdoll
-ID: 453, Name: CTFAmmoPack, Send Table Name: DT_AmmoPack
-ID: 454, Name: CSceneEntity, Send Table Name: DT_SceneEntity
-ID: 455, Name: CTFBat, Send Table Name: DT_TFWeaponBat
-ID: 456, Name: CTFWearable, Send Table Name: DT_TFWearable
-ID: 457, Name: CTFRagdoll, Send Table Name: DT_TFRagdoll
-ID: 458, Name: CTFPowerupBottle, Send Table Name: DT_TFPowerupBottle
-ID: 459, Name: CTFAmmoPack, Send Table Name: DT_AmmoPack
-ID: 460, Name: CTFViewModel, Send Table Name: DT_TFViewModel
-ID: 461, Name: CTFRagdoll, Send Table Name: DT_TFRagdoll
-ID: 462, Name: CSceneEntity, Send Table Name: DT_SceneEntity
-ID: 463, Name: CTFDroppedWeapon, Send Table Name: DT_TFDroppedWeapon
-ID: 464, Name: CTFRagdoll, Send Table Name: DT_TFRagdoll
-ID: 465, Name: CTFWearable, Send Table Name: DT_TFWearable
-ID: 466, Name: CSceneEntity, Send Table Name: DT_SceneEntity
-ID: 467, Name: CTFViewModel, Send Table Name: DT_TFViewModel
-ID: 469, Name: CTFViewModel, Send Table Name: DT_TFViewModel
-ID: 470, Name: CSceneEntity, Send Table Name: DT_SceneEntity
-ID: 472, Name: CTFDroppedWeapon, Send Table Name: DT_TFDroppedWeapon
-ID: 474, Name: CTFAmmoPack, Send Table Name: DT_AmmoPack
-ID: 475, Name: CTFRagdoll, Send Table Name: DT_TFRagdoll
-ID: 476, Name: CTFWearable, Send Table Name: DT_TFWearable
-ID: 477, Name: CSceneEntity, Send Table Name: DT_SceneEntity
-ID: 478, Name: CTFDroppedWeapon, Send Table Name: DT_TFDroppedWeapon
-ID: 479, Name: CTFBat_Giftwrap, Send Table Name: DT_TFWeaponBat_Giftwrap
-ID: 480, Name: CTFViewModel, Send Table Name: DT_TFViewModel
-ID: 481, Name: CTFWearable, Send Table Name: DT_TFWearable
-ID: 482, Name: CTFRagdoll, Send Table Name: DT_TFRagdoll
-ID: 483, Name: CSceneEntity, Send Table Name: DT_SceneEntity
-ID: 484, Name: CTFRagdoll, Send Table Name: DT_TFRagdoll
-ID: 486, Name: CSceneEntity, Send Table Name: DT_SceneEntity
-ID: 487, Name: CTFWearable, Send Table Name: DT_TFWearable
-ID: 488, Name: CTFWearable, Send Table Name: DT_TFWearable
-ID: 489, Name: CSceneEntity, Send Table Name: DT_SceneEntity
-ID: 490, Name: CBeam, Send Table Name: DT_Beam
-ID: 491, Name: CTFWearable, Send Table Name: DT_TFWearable
-ID: 492, Name: CTFRocketLauncher, Send Table Name: DT_WeaponRocketLauncher
-ID: 493, Name: CBeam, Send Table Name: DT_Beam
-ID: 494, Name: CTFShovel, Send Table Name: DT_TFWeaponShovel
-ID: 495, Name: CTFAmmoPack, Send Table Name: DT_AmmoPack
-ID: 496, Name: CTFGrenadeLauncher, Send Table Name: DT_WeaponGrenadeLauncher
-ID: 497, Name: CTFPipebombLauncher, Send Table Name: DT_WeaponPipebombLauncher
-ID: 498, Name: CTFBottle, Send Table Name: DT_TFWeaponBottle
-ID: 499, Name: CTFWearable, Send Table Name: DT_TFWearable
-ID: 500, Name: CTFWearable, Send Table Name: DT_TFWearable
-ID: 501, Name: CTFWearable, Send Table Name: DT_TFWearable
-ID: 502, Name: CBeam, Send Table Name: DT_Beam
-ID: 503, Name: CTFWearable, Send Table Name: DT_TFWearable
-ID: 504, Name: CTFPowerupBottle, Send Table Name: DT_TFPowerupBottle
-ID: 505, Name: CTFWearable, Send Table Name: DT_TFWearable
-ID: 506, Name: CTFSpellBook, Send Table Name: DT_TFWeaponSpellBook
-ID: 507, Name: CTFRagdoll, Send Table Name: DT_TFRagdoll
-ID: 508, Name: CTFWearable, Send Table Name: DT_TFWearable
-ID: 509, Name: CBeam, Send Table Name: DT_Beam
-ID: 510, Name: CTFWearable, Send Table Name: DT_TFWearable
-ID: 511, Name: CSceneEntity, Send Table Name: DT_SceneEntity
-ID: 512, Name: CBeam, Send Table Name: DT_Beam
-ID: 513, Name: CTFWearable, Send Table Name: DT_TFWearable
-ID: 514, Name: CTFProjectile_Rocket, Send Table Name: DT_TFProjectile_Rocket
-ID: 515, Name: CTFRagdoll, Send Table Name: DT_TFRagdoll
-ID: 516, Name: CBeam, Send Table Name: DT_Beam
-ID: 517, Name: CTFShovel, Send Table Name: DT_TFWeaponShovel
-ID: 518, Name: CSceneEntity, Send Table Name: DT_SceneEntity
-ID: 519, Name: CTFWearable, Send Table Name: DT_TFWearable
-ID: 520, Name: CBeam, Send Table Name: DT_Beam
-ID: 521, Name: CSceneEntity, Send Table Name: DT_SceneEntity
-ID: 522, Name: CBeam, Send Table Name: DT_Beam
-ID: 523, Name: CTFWearable, Send Table Name: DT_TFWearable
-ID: 525, Name: CTFWearable, Send Table Name: DT_TFWearable
-ID: 526, Name: CTFViewModel, Send Table Name: DT_TFViewModel
-ID: 527, Name: CBeam, Send Table Name: DT_Beam
-ID: 528, Name: CTFProjectile_Rocket, Send Table Name: DT_TFProjectile_Rocket
-ID: 529, Name: CBeam, Send Table Name: DT_Beam
-ID: 531, Name: CBeam, Send Table Name: DT_Beam
-ID: 532, Name: CSceneEntity, Send Table Name: DT_SceneEntity
-ID: 533, Name: CBeam, Send Table Name: DT_Beam
-ID: 534, Name: CSceneEntity, Send Table Name: DT_SceneEntity
-ID: 535, Name: CBeam, Send Table Name: DT_Beam
-ID: 537, Name: CBeam, Send Table Name: DT_Beam
-ID: 538, Name: CTFFists, Send Table Name: DT_TFWeaponFists
-ID: 539, Name: CBeam, Send Table Name: DT_Beam
-ID: 540, Name: CTFWearable, Send Table Name: DT_TFWearable
-ID: 541, Name: CBeam, Send Table Name: DT_Beam
-ID: 543, Name: CBeam, Send Table Name: DT_Beam
-ID: 545, Name: CBeam, Send Table Name: DT_Beam
-ID: 546, Name: CSceneEntity, Send Table Name: DT_SceneEntity
-ID: 547, Name: CBeam, Send Table Name: DT_Beam
-ID: 549, Name: CBeam, Send Table Name: DT_Beam
-ID: 550, Name: CSceneEntity, Send Table Name: DT_SceneEntity
-ID: 551, Name: CBeam, Send Table Name: DT_Beam
-ID: 552, Name: CTFDroppedWeapon, Send Table Name: DT_TFDroppedWeapon
-ID: 553, Name: CBeam, Send Table Name: DT_Beam
-ID: 554, Name: CTFAmmoPack, Send Table Name: DT_AmmoPack
-ID: 555, Name: CBeam, Send Table Name: DT_Beam
-ID: 556, Name: CTFRagdoll, Send Table Name: DT_TFRagdoll
-ID: 557, Name: CBeam, Send Table Name: DT_Beam
-ID: 559, Name: CBeam, Send Table Name: DT_Beam
-ID: 561, Name: CBeam, Send Table Name: DT_Beam
-ID: 563, Name: CBeam, Send Table Name: DT_Beam
-ID: 565, Name: CBeam, Send Table Name: DT_Beam
-ID: 566, Name: CTFRocketLauncher, Send Table Name: DT_WeaponRocketLauncher
-ID: 568, Name: CTFWearable, Send Table Name: DT_TFWearable
-ID: 569, Name: CBeam, Send Table Name: DT_Beam
-ID: 570, Name: CTFShovel, Send Table Name: DT_TFWeaponShovel
-ID: 572, Name: CBeam, Send Table Name: DT_Beam
-ID: 574, Name: CBeam, Send Table Name: DT_Beam
-ID: 576, Name: CBeam, Send Table Name: DT_Beam
-ID: 578, Name: CBeam, Send Table Name: DT_Beam
-ID: 580, Name: CBeam, Send Table Name: DT_Beam
-ID: 582, Name: CBeam, Send Table Name: DT_Beam
-ID: 584, Name: CBeam, Send Table Name: DT_Beam
-ID: 586, Name: CBeam, Send Table Name: DT_Beam
-ID: 588, Name: CBeam, Send Table Name: DT_Beam
-ID: 590, Name: CBeam, Send Table Name: DT_Beam
-ID: 592, Name: CBeam, Send Table Name: DT_Beam
-ID: 594, Name: CBeam, Send Table Name: DT_Beam
-ID: 596, Name: CBeam, Send Table Name: DT_Beam
-ID: 598, Name: CBeam, Send Table Name: DT_Beam
-ID: 600, Name: CBeam, Send Table Name: DT_Beam
-ID: 602, Name: CBeam, Send Table Name: DT_Beam
-ID: 604, Name: CBeam, Send Table Name: DT_Beam
-ID: 606, Name: CBeam, Send Table Name: DT_Beam
-ID: 608, Name: CBeam, Send Table Name: DT_Beam
-ID: 610, Name: CBeam, Send Table Name: DT_Beam
-ID: 612, Name: CBeam, Send Table Name: DT_Beam
-ID: 614, Name: CBeam, Send Table Name: DT_Beam
-ID: 616, Name: CBeam, Send Table Name: DT_Beam
-ID: 618, Name: CBeam, Send Table Name: DT_Beam
-ID: 620, Name: CBeam, Send Table Name: DT_Beam
-ID: 622, Name: CBeam, Send Table Name: DT_Beam
-ID: 624, Name: CBeam, Send Table Name: DT_Beam
-ID: 626, Name: CBeam, Send Table Name: DT_Beam
-ID: 628, Name: CBeam, Send Table Name: DT_Beam
-ID: 630, Name: CBeam, Send Table Name: DT_Beam
-ID: 632, Name: CBeam, Send Table Name: DT_Beam
-ID: 634, Name: CBeam, Send Table Name: DT_Beam
-ID: 636, Name: CBeam, Send Table Name: DT_Beam
-ID: 638, Name: CBeam, Send Table Name: DT_Beam
-ID: 640, Name: CBeam, Send Table Name: DT_Beam
-ID: 642, Name: CBeam, Send Table Name: DT_Beam
-ID: 644, Name: CBeam, Send Table Name: DT_Beam
-ID: 646, Name: CBeam, Send Table Name: DT_Beam
-ID: 648, Name: CBeam, Send Table Name: DT_Beam
-ID: 650, Name: CBeam, Send Table Name: DT_Beam
-ID: 652, Name: CBeam, Send Table Name: DT_Beam
-ID: 654, Name: CBeam, Send Table Name: DT_Beam
-ID: 656, Name: CBeam, Send Table Name: DT_Beam
-ID: 658, Name: CBeam, Send Table Name: DT_Beam
-ID: 660, Name: CBeam, Send Table Name: DT_Beam
-ID: 662, Name: CBeam, Send Table Name: DT_Beam
-ID: 664, Name: CBeam, Send Table Name: DT_Beam
-ID: 666, Name: CBeam, Send Table Name: DT_Beam
-ID: 668, Name: CBeam, Send Table Name: DT_Beam
-ID: 670, Name: CBeam, Send Table Name: DT_Beam
-ID: 672, Name: CBeam, Send Table Name: DT_Beam
-ID: 674, Name: CBeam, Send Table Name: DT_Beam
-ID: 676, Name: CBeam, Send Table Name: DT_Beam
-ID: 678, Name: CBeam, Send Table Name: DT_Beam
-ID: 680, Name: CBeam, Send Table Name: DT_Beam
-ID: 682, Name: CBeam, Send Table Name: DT_Beam
-ID: 684, Name: CBeam, Send Table Name: DT_Beam
-ID: 686, Name: CBeam, Send Table Name: DT_Beam
-ID: 688, Name: CBeam, Send Table Name: DT_Beam
-ID: 690, Name: CBeam, Send Table Name: DT_Beam
-ID: 692, Name: CBeam, Send Table Name: DT_Beam
-ID: 694, Name: CBeam, Send Table Name: DT_Beam
-ID: 696, Name: CBeam, Send Table Name: DT_Beam
-ID: 698, Name: CBeam, Send Table Name: DT_Beam
-ID: 700, Name: CBeam, Send Table Name: DT_Beam
-ID: 702, Name: CBeam, Send Table Name: DT_Beam
-ID: 704, Name: CBeam, Send Table Name: DT_Beam
-ID: 706, Name: CBeam, Send Table Name: DT_Beam
-ID: 708, Name: CBeam, Send Table Name: DT_Beam
-ID: 710, Name: CBeam, Send Table Name: DT_Beam
-ID: 712, Name: CBeam, Send Table Name: DT_Beam
-ID: 714, Name: CBeam, Send Table Name: DT_Beam
-ID: 716, Name: CBeam, Send Table Name: DT_Beam
-ID: 718, Name: CBeam, Send Table Name: DT_Beam
-ID: 720, Name: CBeam, Send Table Name: DT_Beam
-ID: 722, Name: CBeam, Send Table Name: DT_Beam
-ID: 724, Name: CBeam, Send Table Name: DT_Beam
-ID: 726, Name: CBeam, Send Table Name: DT_Beam
-ID: 728, Name: CBeam, Send Table Name: DT_Beam
-ID: 730, Name: CBeam, Send Table Name: DT_Beam
-ID: 732, Name: CBeam, Send Table Name: DT_Beam
-ID: 734, Name: CBeam, Send Table Name: DT_Beam
-ID: 736, Name: CBeam, Send Table Name: DT_Beam
-ID: 738, Name: CBeam, Send Table Name: DT_Beam
-ID: 740, Name: CBeam, Send Table Name: DT_Beam
-ID: 742, Name: CBeam, Send Table Name: DT_Beam
-ID: 744, Name: CBeam, Send Table Name: DT_Beam
-ID: 746, Name: CBeam, Send Table Name: DT_Beam
-ID: 748, Name: CBeam, Send Table Name: DT_Beam
-ID: 750, Name: CBeam, Send Table Name: DT_Beam
-ID: 752, Name: CBeam, Send Table Name: DT_Beam
-ID: 754, Name: CBeam, Send Table Name: DT_Beam
-ID: 756, Name: CBeam, Send Table Name: DT_Beam
-ID: 758, Name: CBeam, Send Table Name: DT_Beam
-ID: 760, Name: CBeam, Send Table Name: DT_Beam
-ID: 762, Name: CBeam, Send Table Name: DT_Beam
-ID: 764, Name: CBeam, Send Table Name: DT_Beam
-ID: 766, Name: CBeam, Send Table Name: DT_Beam
-ID: 768, Name: CBeam, Send Table Name: DT_Beam
-ID: 770, Name: CBeam, Send Table Name: DT_Beam
-ID: 772, Name: CBeam, Send Table Name: DT_Beam
-ID: 774, Name: CBeam, Send Table Name: DT_Beam
-ID: 776, Name: CBeam, Send Table Name: DT_Beam
-ID: 779, Name: CBeam, Send Table Name: DT_Beam
-ID: 781, Name: CBeam, Send Table Name: DT_Beam
-ID: 783, Name: CBeam, Send Table Name: DT_Beam
-ID: 785, Name: CBeam, Send Table Name: DT_Beam
-ID: 787, Name: CBeam, Send Table Name: DT_Beam
-ID: 789, Name: CBeam, Send Table Name: DT_Beam
-ID: 791, Name: CBeam, Send Table Name: DT_Beam
-ID: 793, Name: CBeam, Send Table Name: DT_Beam
-ID: 795, Name: CBeam, Send Table Name: DT_Beam
-ID: 797, Name: CBeam, Send Table Name: DT_Beam
-ID: 799, Name: CBeam, Send Table Name: DT_Beam
-ID: 801, Name: CBeam, Send Table Name: DT_Beam
-ID: 803, Name: CBeam, Send Table Name: DT_Beam
-ID: 805, Name: CBeam, Send Table Name: DT_Beam
-ID: 807, Name: CBeam, Send Table Name: DT_Beam
-ID: 809, Name: CBeam, Send Table Name: DT_Beam
-ID: 811, Name: CBeam, Send Table Name: DT_Beam
-ID: 813, Name: CBeam, Send Table Name: DT_Beam
-ID: 815, Name: CBeam, Send Table Name: DT_Beam
-ID: 817, Name: CBeam, Send Table Name: DT_Beam
-ID: 819, Name: CBeam, Send Table Name: DT_Beam
-ID: 821, Name: CBeam, Send Table Name: DT_Beam
-ID: 823, Name: CBeam, Send Table Name: DT_Beam
-ID: 825, Name: CBeam, Send Table Name: DT_Beam
-ID: 827, Name: CBeam, Send Table Name: DT_Beam
-ID: 829, Name: CBeam, Send Table Name: DT_Beam
-ID: 831, Name: CBeam, Send Table Name: DT_Beam
-ID: 833, Name: CBeam, Send Table Name: DT_Beam
-ID: 835, Name: CBeam, Send Table Name: DT_Beam
-ID: 837, Name: CBeam, Send Table Name: DT_Beam
-ID: 839, Name: CBeam, Send Table Name: DT_Beam
-ID: 841, Name: CBeam, Send Table Name: DT_Beam
-ID: 843, Name: CBeam, Send Table Name: DT_Beam
-ID: 845, Name: CBeam, Send Table Name: DT_Beam
-ID: 847, Name: CBeam, Send Table Name: DT_Beam
-ID: 849, Name: CBeam, Send Table Name: DT_Beam
-ID: 851, Name: CBeam, Send Table Name: DT_Beam
-ID: 853, Name: CBeam, Send Table Name: DT_Beam
-ID: 855, Name: CBeam, Send Table Name: DT_Beam
-ID: 857, Name: CBeam, Send Table Name: DT_Beam
-ID: 859, Name: CBeam, Send Table Name: DT_Beam
-ID: 861, Name: CBeam, Send Table Name: DT_Beam
-ID: 863, Name: CBeam, Send Table Name: DT_Beam
-ID: 865, Name: CBeam, Send Table Name: DT_Beam
-ID: 867, Name: CBeam, Send Table Name: DT_Beam
-ID: 869, Name: CBeam, Send Table Name: DT_Beam
-ID: 871, Name: CBeam, Send Table Name: DT_Beam
-ID: 873, Name: CBeam, Send Table Name: DT_Beam
-ID: 875, Name: CBeam, Send Table Name: DT_Beam
-ID: 877, Name: CBeam, Send Table Name: DT_Beam
-ID: 879, Name: CBeam, Send Table Name: DT_Beam
-ID: 881, Name: CBeam, Send Table Name: DT_Beam
-ID: 883, Name: CBeam, Send Table Name: DT_Beam
-ID: 885, Name: CBeam, Send Table Name: DT_Beam
-ID: 887, Name: CBeam, Send Table Name: DT_Beam
-ID: 889, Name: CBeam, Send Table Name: DT_Beam
-ID: 891, Name: CBeam, Send Table Name: DT_Beam
-ID: 893, Name: CBeam, Send Table Name: DT_Beam
-ID: 895, Name: CBeam, Send Table Name: DT_Beam
-ID: 897, Name: CBeam, Send Table Name: DT_Beam
-ID: 899, Name: CBeam, Send Table Name: DT_Beam
-ID: 901, Name: CBeam, Send Table Name: DT_Beam
-ID: 903, Name: CBeam, Send Table Name: DT_Beam
-ID: 905, Name: CBeam, Send Table Name: DT_Beam
-ID: 907, Name: CBeam, Send Table Name: DT_Beam
-ID: 909, Name: CBeam, Send Table Name: DT_Beam
-ID: 911, Name: CBeam, Send Table Name: DT_Beam
-ID: 913, Name: CBeam, Send Table Name: DT_Beam
-ID: 915, Name: CBeam, Send Table Name: DT_Beam
-ID: 917, Name: CBeam, Send Table Name: DT_Beam
-ID: 919, Name: CBeam, Send Table Name: DT_Beam
-ID: 921, Name: CBeam, Send Table Name: DT_Beam
-ID: 923, Name: CBeam, Send Table Name: DT_Beam
-ID: 925, Name: CBeam, Send Table Name: DT_Beam
-ID: 927, Name: CBeam, Send Table Name: DT_Beam
-ID: 929, Name: CBeam, Send Table Name: DT_Beam
-ID: 931, Name: CBeam, Send Table Name: DT_Beam
-ID: 933, Name: CBeam, Send Table Name: DT_Beam
-ID: 934, Name: CBeam, Send Table Name: DT_Beam
-ID: 935, Name: CBeam, Send Table Name: DT_Beam
-ID: 936, Name: CBeam, Send Table Name: DT_Beam
-ID: 937, Name: CBeam, Send Table Name: DT_Beam
-ID: 938, Name: CBeam, Send Table Name: DT_Beam
-ID: 940, Name: CBeam, Send Table Name: DT_Beam
-ID: 942, Name: CBeam, Send Table Name: DT_Beam
-ID: 944, Name: CBeam, Send Table Name: DT_Beam
-{"id":"default","winner":"spectator","player_id_list":[],"strats":[],"last_tick":141259,"player_info":[{"classes":{},"name":"SourceTV","userId":2,"steamId":"BOT","team":"other"},{"classes":{},"name":"the kitchen mid (bacon egg and ","userId":3,"steamId":"[U:1:1086401461]","team":"other"},{"classes":{},"name":"MANE6 NeoTenic","userId":4,"steamId":"[U:1:65672683]","team":"other"},{"classes":{},"name":"A$AP CACTUS","userId":5,"steamId":"[U:1:364121086]","team":"other"},{"classes":{},"name":"matt_rolltide","userId":6,"steamId":"[U:1:836461436]","team":"other"},{"classes":{},"name":"Jesus H. Percocet","userId":7,"steamId":"[U:1:15704397]","team":"other"},{"classes":{},"name":"Crazed","userId":8,"steamId":"[U:1:1038174810]","team":"other"},{"classes":{},"name":"bobmode #Freak","userId":12,"steamId":"[U:1:264182612]","team":"other"},{"classes":{},"name":"Bert.","userId":13,"steamId":"[U:1:180400618]","team":"other"},{"classes":{},"name":"fleapert #FMCL","userId":15,"steamId":"[U:1:1602489843]","team":"other"},{"classes":{},"name":"thug pootis 420 #FMCL","userId":19,"steamId":"[U:1:331804838]","team":"other"},{"classes":{},"name":"phasod","userId":17,"steamId":"[U:1:153919263]","team":"other"},{"classes":{},"name":"Vanguard","userId":21,"steamId":"[U:1:133637068]","team":"other"},{"classes":{},"name":"mary","userId":24,"steamId":"[U:1:426078340]","team":"other"},{"classes":{},"name":"Drew","userId":25,"steamId":"[U:1:116595300]","team":"other"},{"classes":{},"name":"eatyourheartout","userId":27,"steamId":"[U:1:73086130]","team":"other"}],"header":{"demo_type":"HL2DEMO","version":3,"protocol":24,"server":"na.serveme.tf #564198","nick":"SourceTV Demo","map":"cp_process_f12","game":"tf","duration":2118.885,"ticks":141259,"frames":120702,"signon":974074},"red":{"on_last_ticks":[78130,86933,121234,138059],"off_last_ticks":[99306],"sac_ticks":[[5,27589],[5,29337],[5,50554],[5,61977],[5,65345]],"last_capped_ticks":[81783,125442,140591],"med_deaths_on_last":[81404,123867,140281],"sniper_ticks_per_last":[0,0,0,0,0,0],"spy_ticks_per_last":[0,0,0,0,0,0],"on_last_idx":5},"blue":{"on_last_ticks":[26311,43225,49730,60430,107622,131217],"off_last_ticks":[39344,53862,66039,111082],"sac_ticks":[[10,81389],[10,90577],[10,123594]],"last_capped_ticks":[44416,132798],"med_deaths_on_last":[31282,43851],"sniper_ticks_per_last":[0,0,0,0],"spy_ticks_per_last":[0,0,0,0],"on_last_idx":3},"last_tick_with_sac":[10,123772]}
+1 BOT SourceTV
+1 [U:1:1086401461] the kitchen mid (bacon egg and 
+1 [U:1:65672683] MANE6 NeoTenic
+1 [U:1:364121086] A$AP CACTUS
+1 [U:1:836461436] matt_rolltide
+1 [U:1:15704397] Jesus H. Percocet
+1 [U:1:1038174810] Crazed
+1 [U:1:264182612] bobmode #Freak
+1 [U:1:180400618] Bert.
+1 [U:1:1602489843] fleapert #FMCL
+1 [U:1:331804838] thug pootis 420 #FMCL
+1 [U:1:153919263] phasod
+154 | fleapert #FMCL hit a direct on matt_rolltide while midair
+1693 [U:1:133637068] Vanguard
+27103 | matt_rolltide hit a direct on the kitchen mid (bacon egg and  while grounded
+29494 | Bert. hit a direct on NeoTenic while midair
+29930 | matt_rolltide hit a direct on snip while grounded
+30369 | fleapert #FMCL hit a direct on NeoTenic while midair
+31722 | Bert. hit a direct on A$AP CACTUS while grounded
+32110 | bobmode #Freak hit a direct on Crazed while grounded
+33774 | Bert. hit a direct on Jesus H. Percocet while grounded
+34003 | fleapert #FMCL hit an airshot on matt_rolltide while midair
+34581 | fleapert #FMCL hit a direct on matt_rolltide while grounded
+36042 | matt_rolltide hit a direct on fleapert #FMCL while midair
+36071 | bobmode #Freak hit a direct on fleapert #FMCL while midair
+36649 | Bert. hit a direct on A$AP CACTUS while midair
+36908 | snip hit a direct on bobmode #Freak while grounded
+37413 | Bert. hit an airshot on bobmode #Freak while midair
+38168 | Bert. hit an airshot on phasod while midair
+40357 | matt_rolltide hit a direct on the kitchen mid (bacon egg and  while midair
+40422 | matt_rolltide hit an airshot on the kitchen mid (bacon egg and  while grounded
+40701 [U:1:426078340] mary
+43849 | Bert. hit a direct on A$AP CACTUS while grounded
+43924 | fleapert #FMCL hit a direct on A$AP CACTUS while midair
+43974 | Bert. hit a direct on Jesus H. Percocet while midair
+47047 | matt_rolltide hit a direct on Crazed while grounded
+50499 | Bert. hit an airshot on NeoTenic while midair
+54174 | fleapert #FMCL hit a direct on bobmode #Freak while grounded
+55757 | fleapert #FMCL hit a direct on A$AP CACTUS while grounded
+59744 | fleapert #FMCL hit a direct on matt_rolltide while grounded
+60657 | fleapert #FMCL hit an airshot on matt_rolltide while midair
+61643 | bobmode #Freak hit a direct on fleapert #FMCL while grounded
+62106 | Bert. hit a direct on bobmode #Freak while midair
+62163 | bobmode #Freak hit a direct on Bert. while midair
+62684 | matt_rolltide hit a direct on Crazed while grounded
+66774 | fleapert #FMCL hit a direct on bobmode #Freak while grounded
+66837 | bobmode #Freak hit a direct on fleapert #FMCL while grounded
+73106 | Bert. hit a direct on Jesus H. Percocet while grounded
+73489 | fleapert #FMCL hit a direct on NeoTenic while grounded
+74546 | matt_rolltide hit an airshot on fleapert #FMCL while grounded
+76592 | bobmode #Freak hit an airshot on Vanguard while midair
+76912 | matt_rolltide hit an airshot on the kitchen mid (bacon egg and  while midair
+78682 | Bert. hit a direct on A$AP CACTUS while grounded
+84001 | fleapert #FMCL hit a direct on NeoTenic while grounded
+88379 | bobmode #Freak hit an airshot on Bert. while grounded
+88424 | Bert. hit a direct on matt_rolltide while midair
+94224 | SourceTV hit a direct on Crazed while midair
+95335 | Bert. hit a direct on matt_rolltide while grounded
+96453 | bobmode #Freak hit an airshot on Vanguard while grounded
+97098 | matt_rolltide hit a direct on Bert. while grounded
+98234 | fleapert #FMCL hit a direct on NeoTenic while grounded
+103761 | matt_rolltide hit a direct on Vanguard while grounded
+104844 | fleapert #FMCL hit a direct on Jesus H. Percocet while grounded
+105035 | Bert. hit an airshot on A$AP CACTUS while midair
+106507 | Bert. hit a direct on NeoTenic while midair
+109124 | fleapert #FMCL hit a direct on matt_rolltide while grounded
+110842 [U:1:116595300] Drew
+111375 | Bert. hit an airshot on A$AP CACTUS while midair
+115310 | bobmode #Freak hit a direct on fleapert #FMCL while grounded
+117518 | bobmode #Freak hit a direct on Crazed while midair
+119071 | bobmode #Freak hit an airshot on Vanguard while grounded
+122230 | Bert. hit a direct on Jesus H. Percocet while grounded
+122714 | matt_rolltide hit a direct on snip while grounded
+124008 | bobmode #Freak hit a direct on snip while grounded
+124630 | bobmode #Freak hit an airshot on Crazed while midair
+131765 | fleapert #FMCL hit a direct on matt_rolltide while grounded
+132014 | Crazed hit a direct on A$AP CACTUS while grounded
+138764 | bobmode #Freak hit an airshot on Crazed while grounded
+138911 | bobmode #Freak hit a direct on Crazed while midair
+139318 | Bert. hit a direct on Jesus H. Percocet while midair
+140357 [U:1:73086130] eatyourheartout
+140432 | bobmode #Freak hit a direct on Crazed while grounded

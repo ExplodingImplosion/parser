@@ -48,10 +48,10 @@ fn main() -> Result<(), MainError> {
     let demo = Demo::new(&file);
 
     if !detailed_summaries {
-        let gaming = parse_sac::parse_demo(demo)?;
-        let parsed = JsonParsed {state: gaming};
-        println!("{}", serde_json::to_string(&parsed)?);
-        let gaming2 = parse_bert_airshot::parse_demo(Demo::new(&file))?;
+        // let gaming = parse_sac::parse_demo(demo)?;
+        // let parsed = JsonParsed {state: gaming};
+        // println!("{}", serde_json::to_string(&parsed)?);
+        let gaming2 = parse_bert_airshot::parse_demo(demo)?;
         // // Use the default (simple) analyzer to track kills, assists, and deaths
         // let parser = if all {
         //     DemoParser::new_all(demo.get_stream())
