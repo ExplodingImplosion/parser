@@ -83,7 +83,7 @@ impl ParsedDemo {
     pub fn finish(&mut self, state: &GameState) {
         // TODO add stuff
     }
-    const BertID: String = "U:1:180400618".to_string();
+    const BertID: &str = "[U:1:180400618]";
     pub fn push_state(&mut self, mut game_state: &GameState) {
         if let Some(world) = game_state.world.as_ref() {
             for _tick in u32::from(self.last_tick)..u32::from(game_state.tick) {
@@ -129,7 +129,7 @@ impl ParsedDemo {
                     let airshot = bruh.is_in_air();
 
                     if let Some(shooter_info) = shooter_info {
-                        if shooter_info.steam_id == Self::BertID {
+                        if shooter_info.steam_id == Self::BertID{
                             let from_midair = shooter.unwrap().is_in_air();
                             println!("{} | {} hit a{} on {} while {}",
                                      game_state.tick,

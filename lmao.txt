@@ -1,82 +1,19 @@
-1 BOT SourceTV
-1 [U:1:1086401461] the kitchen mid (bacon egg and 
-1 [U:1:65672683] MANE6 NeoTenic
-1 [U:1:364121086] A$AP CACTUS
-1 [U:1:836461436] matt_rolltide
-1 [U:1:15704397] Jesus H. Percocet
-1 [U:1:1038174810] Crazed
-1 [U:1:264182612] bobmode #Freak
-1 [U:1:180400618] Bert.
-1 [U:1:1602489843] fleapert #FMCL
-1 [U:1:331804838] thug pootis 420 #FMCL
-1 [U:1:153919263] phasod
-154 | fleapert #FMCL hit a direct on matt_rolltide while midair
-1693 [U:1:133637068] Vanguard
-27103 | matt_rolltide hit a direct on the kitchen mid (bacon egg and  while grounded
 29494 | Bert. hit a direct on NeoTenic while midair
-29930 | matt_rolltide hit a direct on snip while grounded
-30369 | fleapert #FMCL hit a direct on NeoTenic while midair
 31722 | Bert. hit a direct on A$AP CACTUS while grounded
-32110 | bobmode #Freak hit a direct on Crazed while grounded
 33774 | Bert. hit a direct on Jesus H. Percocet while grounded
-34003 | fleapert #FMCL hit an airshot on matt_rolltide while midair
-34581 | fleapert #FMCL hit a direct on matt_rolltide while grounded
-36042 | matt_rolltide hit a direct on fleapert #FMCL while midair
-36071 | bobmode #Freak hit a direct on fleapert #FMCL while midair
 36649 | Bert. hit a direct on A$AP CACTUS while midair
-36908 | snip hit a direct on bobmode #Freak while grounded
 37413 | Bert. hit an airshot on bobmode #Freak while midair
 38168 | Bert. hit an airshot on phasod while midair
-40357 | matt_rolltide hit a direct on the kitchen mid (bacon egg and  while midair
-40422 | matt_rolltide hit an airshot on the kitchen mid (bacon egg and  while grounded
-40701 [U:1:426078340] mary
 43849 | Bert. hit a direct on A$AP CACTUS while grounded
-43924 | fleapert #FMCL hit a direct on A$AP CACTUS while midair
 43974 | Bert. hit a direct on Jesus H. Percocet while midair
-47047 | matt_rolltide hit a direct on Crazed while grounded
 50499 | Bert. hit an airshot on NeoTenic while midair
-54174 | fleapert #FMCL hit a direct on bobmode #Freak while grounded
-55757 | fleapert #FMCL hit a direct on A$AP CACTUS while grounded
-59744 | fleapert #FMCL hit a direct on matt_rolltide while grounded
-60657 | fleapert #FMCL hit an airshot on matt_rolltide while midair
-61643 | bobmode #Freak hit a direct on fleapert #FMCL while grounded
 62106 | Bert. hit a direct on bobmode #Freak while midair
-62163 | bobmode #Freak hit a direct on Bert. while midair
-62684 | matt_rolltide hit a direct on Crazed while grounded
-66774 | fleapert #FMCL hit a direct on bobmode #Freak while grounded
-66837 | bobmode #Freak hit a direct on fleapert #FMCL while grounded
 73106 | Bert. hit a direct on Jesus H. Percocet while grounded
-73489 | fleapert #FMCL hit a direct on NeoTenic while grounded
-74546 | matt_rolltide hit an airshot on fleapert #FMCL while grounded
-76592 | bobmode #Freak hit an airshot on Vanguard while midair
-76912 | matt_rolltide hit an airshot on the kitchen mid (bacon egg and  while midair
 78682 | Bert. hit a direct on A$AP CACTUS while grounded
-84001 | fleapert #FMCL hit a direct on NeoTenic while grounded
-88379 | bobmode #Freak hit an airshot on Bert. while grounded
 88424 | Bert. hit a direct on matt_rolltide while midair
-94224 | SourceTV hit a direct on Crazed while midair
 95335 | Bert. hit a direct on matt_rolltide while grounded
-96453 | bobmode #Freak hit an airshot on Vanguard while grounded
-97098 | matt_rolltide hit a direct on Bert. while grounded
-98234 | fleapert #FMCL hit a direct on NeoTenic while grounded
-103761 | matt_rolltide hit a direct on Vanguard while grounded
-104844 | fleapert #FMCL hit a direct on Jesus H. Percocet while grounded
 105035 | Bert. hit an airshot on A$AP CACTUS while midair
 106507 | Bert. hit a direct on NeoTenic while midair
-109124 | fleapert #FMCL hit a direct on matt_rolltide while grounded
-110842 [U:1:116595300] Drew
 111375 | Bert. hit an airshot on A$AP CACTUS while midair
-115310 | bobmode #Freak hit a direct on fleapert #FMCL while grounded
-117518 | bobmode #Freak hit a direct on Crazed while midair
-119071 | bobmode #Freak hit an airshot on Vanguard while grounded
 122230 | Bert. hit a direct on Jesus H. Percocet while grounded
-122714 | matt_rolltide hit a direct on snip while grounded
-124008 | bobmode #Freak hit a direct on snip while grounded
-124630 | bobmode #Freak hit an airshot on Crazed while midair
-131765 | fleapert #FMCL hit a direct on matt_rolltide while grounded
-132014 | Crazed hit a direct on A$AP CACTUS while grounded
-138764 | bobmode #Freak hit an airshot on Crazed while grounded
-138911 | bobmode #Freak hit a direct on Crazed while midair
 139318 | Bert. hit a direct on Jesus H. Percocet while midair
-140357 [U:1:73086130] eatyourheartout
-140432 | bobmode #Freak hit a direct on Crazed while grounded
