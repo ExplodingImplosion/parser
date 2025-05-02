@@ -93,7 +93,7 @@ impl ParsedDemo {
                 for (index, mut player) in game_state.players.iter().enumerate() {
                     if let (None, Some(info)) = (self.player_info.get(index), player.info.as_ref())
                     {
-                        println!("{} {} {}",game_state.tick,info.steam_id,info.name);
+                        // println!("{} {} {}",game_state.tick,info.steam_id,info.name);
                         self.player_info.push(info.clone());
                     }
                 }
@@ -129,29 +129,32 @@ impl ParsedDemo {
                     let airshot = bruh.is_in_air();
 
                     if let Some(shooter_info) = shooter_info {
-                        let from_midair = shooter.unwrap().is_in_air();
-                        println!("{} | {} hit a{} on {} while {}",
-                                 game_state.tick,
-                                 shooter_info.name,
-                                 if airshot {"n airshot"} else {" direct"},
-                                 player.name,
-                                 if from_midair {"midair"} else {"grounded"},
-                        );
+                        if shooter_info.steam_id == Self::BertID {
+                            let from_midair = shooter.unwrap().is_in_air();
+                            println!("{} | {} hit a{} on {} while {}",
+                                     game_state.tick,
+                                     shooter_info.name,
+                                     if airshot { "n airshot" } else { " direct" },
+                                     player.name,
+                                     if from_midair { "midair" } else { "grounded" },
+                            );
+                        }
                         // println!(
                         //     "{}: {} hit by {} from {}, in air: {}, all flags: {}",
                         //     collision.tick, player.name, weapon_class, shooter_info.name, midair, flags
                         // );
-                    } else {
-                        println!("{} | an unknown player hit a{} on {}",
-                                 game_state.tick,
-                                 if airshot {"n airshot"} else {" direct"},
-                                 player.name,
-                        );
+                    }
+                    // else {
+                    //     println!("{} | an unknown player hit a{} on {}",
+                    //              game_state.tick,
+                    //              if airshot {"n airshot"} else {" direct"},
+                    //              player.name,
+                    //     );
                         // println!(
                         //     "{}: {} hit by {} from unknown player {}",
                         //     collision.tick, player.name, weapon_class, collision.projectile.launcher
                         // );
-                    }
+                    // }
                 }
             }
         }
