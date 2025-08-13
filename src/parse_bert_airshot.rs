@@ -131,10 +131,11 @@ impl ParsedDemo {
                     if let Some(shooter_info) = shooter_info {
                         if shooter_info.steam_id == Self::BertID{
                             let from_midair = shooter.unwrap().is_in_air();
-                            println!("{} | {} hit a{} on {} while {}",
+                            println!("{} | {} hit a{} with {} on {} while {}",
                                      game_state.tick,
                                      shooter_info.name,
                                      if airshot { "n airshot" } else { " direct" },
+                                     weapon_class,
                                      player.name,
                                      if from_midair { "midair" } else { "grounded" },
                             );
