@@ -110,11 +110,19 @@ impl ParsedDemo {
                     .get_player(collision.target)
                     .and_then(|player| player.info.as_ref())
                 {
-                    let weapon_class = game_state
-                        .server_classes
-                        .get(usize::from(collision.projectile.class))
-                        .map(|class| class.name.as_str())
-                        .unwrap_or("unknown weapon");
+
+                    let sclassget = game_state.server_classes.get(usize::from(collision.projectile.class));
+                    let sclassmap = sclassget.map(|class| class.name.as_str());
+
+                    if sclassget.is_none(){
+                        println!("game state server classes get issue!");
+                    }
+                    else if sclassmap.is_none(){
+                        println!("game state server classes map issue!");
+                    }
+
+
+                    let weapon_class = sclassmap.unwrap_or("unknown weapon");
 
                     let shooter = game_state
                         .players
@@ -131,11 +139,13 @@ impl ParsedDemo {
                     if let Some(shooter_info) = shooter_info {
                         if shooter_info.steam_id == Self::BertID{
                             let from_midair = shooter.unwrap().is_in_air();
-                            println!("{} | {} hit a{} with {} on {} while {}",
+                            println!("{} | {} hit a{} with {} ({}, {}) on {} while {}",
                                      game_state.tick,
                                      shooter_info.name,
                                      if airshot { "n airshot" } else { " direct" },
                                      weapon_class,
+                                     collision.projectile.class,
+                                     collision.projectile.launcher,
                                      player.name,
                                      if from_midair { "midair" } else { "grounded" },
                             );
