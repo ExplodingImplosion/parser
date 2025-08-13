@@ -55,28 +55,6 @@ pub struct PrintMessage {
 
 #[cfg_attr(feature = "schema", derive(schemars::JsonSchema))]
 #[derive(BitRead, BitWrite, Debug, PartialEq, Serialize, Deserialize, Clone)]
-pub struct ServerInfoMessage {
-    pub version: u16,
-    pub server_count: u32,
-    pub stv: bool,
-    pub dedicated: bool,
-    pub max_crc: u32,
-    pub max_classes: u16,
-    pub map_hash: [u8; 16],
-    pub player_slot: u8,
-    pub max_player_count: u8,
-    pub interval_per_tick: f32,
-    #[size = 1]
-    pub platform: String,
-    pub game: String,
-    pub map: String,
-    pub skybox: String,
-    pub server_name: String,
-    pub replay: bool,
-}
-
-#[cfg_attr(feature = "schema", derive(schemars::JsonSchema))]
-#[derive(BitRead, BitWrite, Debug, PartialEq, Serialize, Deserialize, Clone)]
 pub struct SetPauseMessage {
     pub pause: bool,
 }
@@ -110,13 +88,6 @@ pub struct EntityMessage<'a> {
     pub length: u16,
     #[size = "length"]
     pub data: Stream<'a>,
-}
-
-#[cfg_attr(feature = "schema", derive(schemars::JsonSchema))]
-#[derive(BitRead, BitWrite, Debug, PartialEq, Serialize, Deserialize, Clone)]
-pub struct PreFetchMessage {
-    #[size = 14]
-    pub index: u16,
 }
 
 #[cfg_attr(feature = "schema", derive(schemars::JsonSchema))]
