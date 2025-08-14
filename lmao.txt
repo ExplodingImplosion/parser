@@ -1,19 +1,85 @@
-29494 | Bert. hit a direct on NeoTenic while midair
-31722 | Bert. hit a direct on A$AP CACTUS while grounded
-33774 | Bert. hit a direct on Jesus H. Percocet while grounded
-36649 | Bert. hit a direct on A$AP CACTUS while midair
-37413 | Bert. hit an airshot on bobmode #Freak while midair
-38168 | Bert. hit an airshot on phasod while midair
-43849 | Bert. hit a direct on A$AP CACTUS while grounded
-43974 | Bert. hit a direct on Jesus H. Percocet while midair
-50499 | Bert. hit an airshot on NeoTenic while midair
-62106 | Bert. hit a direct on bobmode #Freak while midair
-73106 | Bert. hit a direct on Jesus H. Percocet while grounded
-78682 | Bert. hit a direct on A$AP CACTUS while grounded
-88424 | Bert. hit a direct on matt_rolltide while midair
-95335 | Bert. hit a direct on matt_rolltide while grounded
-105035 | Bert. hit an airshot on A$AP CACTUS while midair
-106507 | Bert. hit a direct on NeoTenic while midair
-111375 | Bert. hit an airshot on A$AP CACTUS while midair
-122230 | Bert. hit a direct on Jesus H. Percocet while grounded
-139318 | Bert. hit a direct on Jesus H. Percocet while midair
+game state server classes get issue!
+game state server classes get issue!
+game state server classes get issue!
+29494 | Bert. hit a direct with unknown weapon (264, 614442) on NeoTenic while midair
+game state server classes get issue!
+game state server classes get issue!
+game state server classes get issue!
+31722 | Bert. hit a direct with unknown weapon (264, 614442) on A$AP CACTUS while grounded
+game state server classes get issue!
+game state server classes get issue!
+33774 | Bert. hit a direct with unknown weapon (264, 614442) on Jesus H. Percocet while grounded
+game state server classes get issue!
+game state server classes get issue!
+game state server classes get issue!
+game state server classes get issue!
+game state server classes get issue!
+36649 | Bert. hit a direct with unknown weapon (264, 614442) on A$AP CACTUS while midair
+game state server classes get issue!
+game state server classes get issue!
+37413 | Bert. hit an airshot with unknown weapon (264, 614442) on bobmode #Freak while midair
+game state server classes get issue!
+38168 | Bert. hit an airshot with unknown weapon (264, 614442) on phasod while midair
+game state server classes get issue!
+game state server classes get issue!
+game state server classes get issue!
+43849 | Bert. hit a direct with unknown weapon (264, 614442) on A$AP CACTUS while grounded
+game state server classes get issue!
+game state server classes get issue!
+43974 | Bert. hit a direct with unknown weapon (264, 614442) on Jesus H. Percocet while midair
+game state server classes get issue!
+game state server classes get issue!
+50499 | Bert. hit an airshot with unknown weapon (264, 614442) on NeoTenic while midair
+game state server classes get issue!
+game state server classes get issue!
+game state server classes get issue!
+game state server classes get issue!
+game state server classes get issue!
+game state server classes get issue!
+62106 | Bert. hit a direct with unknown weapon (264, 1624434) on bobmode #Freak while midair
+game state server classes get issue!
+game state server classes get issue!
+game state server classes get issue!
+game state server classes get issue!
+game state server classes get issue!
+73106 | Bert. hit a direct with unknown weapon (264, 1624434) on Jesus H. Percocet while grounded
+game state server classes get issue!
+game state server classes get issue!
+game state server classes get issue!
+game state server classes get issue!
+game state server classes get issue!
+78682 | Bert. hit a direct with unknown weapon (264, 1624434) on A$AP CACTUS while grounded
+game state server classes get issue!
+game state server classes get issue!
+game state server classes get issue!
+88424 | Bert. hit a direct with unknown weapon (264, 1624434) on matt_rolltide while midair
+game state server classes get issue!
+game state server classes get issue!
+95335 | Bert. hit a direct with unknown weapon (264, 1624434) on matt_rolltide while grounded
+game state server classes get issue!
+game state server classes get issue!
+game state server classes get issue!
+game state server classes get issue!
+game state server classes get issue!
+game state server classes get issue!
+105035 | Bert. hit an airshot with unknown weapon (264, 1624434) on A$AP CACTUS while midair
+game state server classes get issue!
+106507 | Bert. hit a direct with unknown weapon (264, 1624434) on NeoTenic while midair
+game state server classes get issue!
+game state server classes get issue!
+111375 | Bert. hit an airshot with unknown weapon (264, 1624434) on A$AP CACTUS while midair
+game state server classes get issue!
+game state server classes get issue!
+game state server classes get issue!
+game state server classes get issue!
+122230 | Bert. hit a direct with unknown weapon (264, 1624434) on Jesus H. Percocet while grounded
+game state server classes get issue!
+game state server classes get issue!
+game state server classes get issue!
+game state server classes get issue!
+game state server classes get issue!
+game state server classes get issue!
+game state server classes get issue!
+game state server classes get issue!
+139318 | Bert. hit a direct with unknown weapon (264, 1624434) on Jesus H. Percocet while midair
+game state server classes get issue!
