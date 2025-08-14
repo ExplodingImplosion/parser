@@ -40,6 +40,9 @@ fn main() -> Result<(), MainError> {
     let parser = DemoParser::new_all_with_analyser(demo.get_stream(), GameStateAnalyser::default());
     let (_header, state) = parser.parse()?;
 
+    for class in &state.server_classes{
+        println!("Server class {} {} {}", class.id,class.name,class.data_table);
+    }
     for collision in &state.collisions {
         let bruh = state.get_player(collision.target).unwrap();
         if let Some(player) = state
