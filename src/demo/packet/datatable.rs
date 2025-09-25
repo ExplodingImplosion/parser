@@ -108,6 +108,12 @@ pub struct ServerClass {
     pub data_table: SendTableName,
 }
 
+// impl ServerClass {
+//     pub fn as_str(&self) -> &str {
+//
+//     }
+// }
+
 #[cfg_attr(feature = "schema", derive(schemars::JsonSchema))]
 #[derive(
     BitWrite,

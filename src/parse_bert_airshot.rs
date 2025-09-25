@@ -114,12 +114,13 @@ impl ParsedDemo {
                     let sclassget = game_state.server_classes.get(usize::from(collision.projectile.class));
                     let sclassmap = sclassget.map(|class| class.name.as_str());
 
-                    if sclassget.is_none(){
-                        println!("game state server classes get issue!");
-                    }
-                    else if sclassmap.is_none(){
-                        println!("game state server classes map issue!");
-                    }
+                    // server classes are fucked it seems
+                    // if sclassget.is_none(){
+                    //     println!("game state server classes get issue!");
+                    // }
+                    // else if sclassmap.is_none(){
+                    //     println!("game state server classes map issue!");
+                    // }
 
 
                     let weapon_class = sclassmap.unwrap_or("unknown weapon");
@@ -189,7 +190,8 @@ pub fn parse_demo(demo: Demo) -> Result<ParsedDemo,ParseError> {
             // let _ =  progress.call1(&JsValue::null(), &last_progress.into());
         }
     }
-
+    let gs = ticker.state();
+    println!("{} collisions", gs.collisions.len());
     parsed_demo.finish(ticker.state());
     // let state = ticker.into_state();
     // for player in state.players {
